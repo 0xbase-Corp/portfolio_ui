@@ -5,6 +5,8 @@
 name: Build Next.js
 
 on:
+  push:
+    branches: ["main"]
   pull_request:
     branches-ignore:
       - 'main'
