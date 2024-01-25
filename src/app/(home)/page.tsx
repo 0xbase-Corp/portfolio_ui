@@ -1,8 +1,10 @@
 import Button from '@mui/material/Button'; 
+import Navbar from '../components/Navbar';
 
 export default function Home() {
   return (
     <main >
+    <Navbar />
     <h1>Landing Home Page</h1>
     <p>This is to check if automatic changes are picked up</p>
     <p>Material UI Integrated</p>
