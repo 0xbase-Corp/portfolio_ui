@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import { Modal as MaterialModal } from '@mui/material';
+
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -16,19 +17,21 @@ const style = {
     p: 4,
 };
 interface ModalProps {
+    openModalButton: string
     title: string
     body: string
-
+    children?: ReactNode
 }
-const MModal: FC<ModalProps> = ({ title, body }) => {
+
+const Modal: FC<ModalProps> = ({ title, body, openModalButton, children }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
-        <div>
-            <Button onClick={handleOpen}>Open modal</Button>
-            <Modal
+        <>
+            <Button onClick={handleOpen}>{openModalButton}</Button>
+            <MaterialModal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -41,10 +44,11 @@ const MModal: FC<ModalProps> = ({ title, body }) => {
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         {body}
                     </Typography>
+                    {children}
                 </Box>
-            </Modal>
-        </div>
+            </MaterialModal>
+        </>
     );
 }
 
-export default MModal
+export default Modal
