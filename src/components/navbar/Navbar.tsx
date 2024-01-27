@@ -38,6 +38,21 @@ const Navbar: FC = () => {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* Expanded Menue */}
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        {Object.entries(pages).map(([text, link]) => {
+                            return (
+                                <Typography
+                                    key={text}
+                                    component="a"
+                                    href={link}
+                                    noWrap
+                                    sx={{ mr: 2, color: 'white', display: 'block', textDecoration: 'none', }}
+                                >
+                                    {text}
+                                </Typography>
+                            )
+                        })}
+                    </Box>
                     <Typography
                         variant="h6"
                         noWrap
@@ -53,9 +68,14 @@ const Navbar: FC = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        FOLIONOMICS expanded
+                        FOLIONOMICS
                     </Typography>
 
+
+
+
+
+                    {/* Collapsed Menue */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -93,14 +113,12 @@ const Navbar: FC = () => {
                                                 mr: 2,
                                                 color: 'inherit',
                                                 textDecoration: 'none',
-                                            }}>collapsed{text}</Typography>
+                                            }}>{text}</Typography>
                                     </MenuItem>)
                             })}
 
                         </Menu>
                     </Box>
-
-                    {/* Collapsed Menue */}
                     <Typography
                         variant="h5"
                         noWrap
@@ -119,19 +137,6 @@ const Navbar: FC = () => {
                     >
                         FOLIONOMICS collapse
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {Object.entries(pages).map(([text, link]) => {
-                            return (
-                                <Button
-                                    key={text}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    ex {text}
-                                </Button>
-                            )
-                        })}
-                    </Box>
 
                     {/* Avatar Top Right */}
                     <Box sx={{ flexGrow: 0 }}>
