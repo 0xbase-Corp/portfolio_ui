@@ -12,7 +12,7 @@ const pages = {
 }
 
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settingsMenu = { 'Profile': "profile", 'Settings': "settings", 'Logout': "logout", Dashboard: "dashboard" };
 
 const Navbar: FC = () => {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -135,7 +135,7 @@ const Navbar: FC = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        FOLIONOMICS collapse
+                        FOLIONOMICS
                     </Typography>
 
                     {/* Avatar Top Right */}
@@ -161,9 +161,13 @@ const Navbar: FC = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography noWrap textAlign="center" component="a" href={setting}>{setting}</Typography>
+                            {Object.entries(settingsMenu).map(([text, link]) => (
+                                <MenuItem key={text} onClick={handleCloseUserMenu}>
+                                    <Typography noWrap textAlign="center" component="a" href={link}
+                                        sx={{
+                                            color: 'inherit',
+                                            textDecoration: 'none',
+                                        }}>{text}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
