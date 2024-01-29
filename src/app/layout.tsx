@@ -1,3 +1,5 @@
+import './styles/globals.css';
+
 export const metadata = {
   title: 'Porfolio Meta',
   description: 'One place to view all your assets',
@@ -10,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body><Navbar></Navbar>{children}</body>
+      <head>
+      </head>
+    <body><Navbar/>{children}</body>
     </html>
   )
 }

@@ -1,5 +1,5 @@
 'use client'
-import Modal from '@/components/modal/Modal';
+import Modal from '@/components/modal/modal';
 import Button from '@mui/material/Button';
 
 
