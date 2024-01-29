@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Porfolio Meta',
   description: 'One place to view all your assets',
 }
-
+import Navbar from "@/components/navbar/Navbar"
 export default function RootLayout({
   children,
 }: {
@@ -16,7 +16,7 @@ export default function RootLayout({
       <link rel="preconnect" href="https://stijndv.com" />
       <link rel="stylesheet" href="https://stijndv.com/fonts/Eudoxus-Sans.css" />
     </head>
-      <body>{children}</body>
+    <body><Navbar></Navbar>{children}</body>
     </html>
   )
 }
