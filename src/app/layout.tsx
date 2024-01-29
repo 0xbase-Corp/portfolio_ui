@@ -16,7 +16,7 @@ export default function RootLayout({
       <link rel="preconnect" href="https://stijndv.com" />
       <link rel="stylesheet" href="https://stijndv.com/fonts/Eudoxus-Sans.css" />
     </head>
-    <body><Navbar></Navbar>{children}</body>
+    <body><Navbar/>{children}</body>
     </html>
   )
 }
