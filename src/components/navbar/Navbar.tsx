@@ -66,7 +66,7 @@ const Navbar: FC = () => {
                             color: 'black',
                             textDecoration: 'none',
                             justifyContent: 'center',
-                            marginRight: '16rem',
+                            mr: 28,
                             
                         }}
                     >
@@ -131,7 +131,6 @@ const Navbar: FC = () => {
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
-                            fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'black',
