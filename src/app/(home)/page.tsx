@@ -18,7 +18,7 @@ export default function Home() {
         Click me
       </Button>
       <Modal title="test" body="this is the body" openModalButton='Sign Up'></Modal>
-      <SignupModal openSignupButton='Sign Up Complete Model'></SignupModal>
+      <SignupModal/>
     </main>
   )
 }

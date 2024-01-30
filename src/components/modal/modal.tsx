@@ -13,9 +13,8 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 240,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
-    borderRadius: 2,
+    borderRadius: 8,
     p: 4,
     '@media (min-width:600px)': {
         width: 400,  
@@ -50,8 +49,8 @@ const Modal: FC<ModalProps> = ({ title, body, openModalButton, children }) => {
                         aria-label="close"
                         sx={{
                             position: 'absolute',
-                            top: 0,
-                            right: 20,
+                            top: 12,
+                            right: 40,
                         }}
                     >
                         <CloseIcon />
