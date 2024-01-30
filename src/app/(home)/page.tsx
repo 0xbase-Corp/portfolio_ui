@@ -1,6 +1,7 @@
 'use client'
 import Modal from '@/components/modal/modal';
 import Button from '@mui/material/Button';
+import SignupModal from '@/container/signup/signupmodal';
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         Click me
       </Button>
       <Modal title="test" body="this is the body" openModalButton='Sign Up'></Modal>
+      <SignupModal openSignupButton='Sign Up Complete Model'></SignupModal>
     </main>
   )
 }
