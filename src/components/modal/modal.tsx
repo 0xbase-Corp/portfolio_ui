@@ -2,8 +2,9 @@ import { FC, ReactNode, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import { Modal as MaterialModal } from '@mui/material';
-
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -16,6 +17,7 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
+
 interface ModalProps {
     openModalButton: string
     title: string
@@ -33,11 +35,23 @@ const Modal: FC<ModalProps> = ({ title, body, openModalButton, children }) => {
             <Button onClick={handleOpen}>{openModalButton}</Button>
             <MaterialModal
                 open={open}
-                onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
+                    <IconButton
+                        edge="end"
+                        color="inherit"
+                        onClick={handleClose}
+                        aria-label="close"
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            right: 20,
+                        }}
+                    >
+                        <CloseIcon />
+                    </IconButton>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         {title}
                     </Typography>
@@ -51,4 +65,4 @@ const Modal: FC<ModalProps> = ({ title, body, openModalButton, children }) => {
     );
 }
 
-export default Modal
+export default Modal;
