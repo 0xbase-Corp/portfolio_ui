@@ -11,11 +11,15 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 240,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
+    borderRadius: 2,
     p: 4,
+    '@media (min-width:600px)': {
+        width: 400,  
+    },
 };
 
 interface ModalProps {
