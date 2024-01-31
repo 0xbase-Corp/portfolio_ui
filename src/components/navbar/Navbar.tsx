@@ -39,7 +39,7 @@ const Navbar: FC = () => {
     }
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'white' }}>
+        <AppBar position="static" sx={{ backgroundColor: 'background.default' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* Expanded Menue */}
@@ -51,7 +51,7 @@ const Navbar: FC = () => {
                                     component="a"
                                     href={link}
                                     noWrap
-                                    sx={{ mr: 2, color: 'black', display: 'block', textDecoration: 'none', }}
+                                    sx={{ mr: 2, color: 'primary.main', display: 'block', textDecoration: 'none', }}
                                 >
                                     {text}
                                 </Typography>
@@ -68,7 +68,7 @@ const Navbar: FC = () => {
                             flexGrow: 1,
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'black',
+                            color: 'primary.main',
                             textDecoration: 'none',
                             justifyContent: 'center',
                             mr: 28,
@@ -86,7 +86,7 @@ const Navbar: FC = () => {
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
                             color="inherit"
-                            sx={{ color: 'black' }}
+
                         >
                             <MenuIcon />
                         </IconButton>
@@ -114,7 +114,7 @@ const Navbar: FC = () => {
                                         <Typography component="a" href={link} textAlign="center"
                                             sx={{
                                                 mr: 2,
-                                                color: 'black',
+                                                color: 'primary.main',
                                                 textDecoration: 'none',
                                             }}>{text}</Typography>
                                     </MenuItem>)
@@ -133,7 +133,7 @@ const Navbar: FC = () => {
                             flexGrow: 1,
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'black',
+                            color: 'primary.main',
                             textDecoration: 'none',
                         }}
                     >
@@ -167,7 +167,7 @@ const Navbar: FC = () => {
                                 <MenuItem key={text} onClick={handleCloseUserMenu}>
                                     <Typography noWrap textAlign="center" component="a" href={link}
                                         sx={{
-                                            color: 'black',
+                                            color: 'primary.main',
                                             textDecoration: 'none',
                                         }}>{text}</Typography>
                                 </MenuItem>
