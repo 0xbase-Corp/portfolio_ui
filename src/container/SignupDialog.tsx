@@ -5,7 +5,7 @@ import { TextField } from '@mui/material';
 import Modal from '@/components/modal/modal';
 
 
-const SignupDialog: FC = ({ }) => {
+const SignupDialog: FC = () => {
 
     return (
         <Modal title="Sign up with Email" openModalButton='Sign Up'>
