@@ -1,6 +1,9 @@
 import './styles/globals.css';
 import Navbar from "@/components/navbar/Navbar"
 import React from 'react';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import { theme } from "@/utils/theme"
+import { ThemeProvider } from '@mui/material/styles'
 
 export const metadata = {
   title: 'Porfolio Meta',
@@ -15,7 +18,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
       </head>
-      <body><Navbar />{children}</body>
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <Navbar />
+            {children}
+          </ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   )
 }
