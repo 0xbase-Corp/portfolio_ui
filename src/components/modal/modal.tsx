@@ -17,14 +17,14 @@ const style = {
     borderRadius: 8,
     p: 4,
     '@media (min-width:600px)': {
-        width: 400,  
+        width: 400,
     },
 };
 
 interface ModalProps {
     openModalButton: string
     title: string
-    body: string
+    body?: string
     children?: ReactNode
 }
 
@@ -55,7 +55,7 @@ const Modal: FC<ModalProps> = ({ title, body, openModalButton, children }) => {
                     >
                         <CloseIcon />
                     </IconButton>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ textAlign: 'center' }}>
                         {title}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>

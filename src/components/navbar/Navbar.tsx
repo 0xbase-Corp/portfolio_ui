@@ -1,7 +1,7 @@
 'use client'
 import { FC, useState, MouseEvent } from 'react'
 import AppBar from '@mui/material/AppBar';
-import { Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
+import { Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
@@ -67,15 +67,10 @@ const Navbar: FC = () => {
                             textDecoration: 'none',
                             justifyContent: 'center',
                             mr: 28,
-                            
                         }}
                     >
                         FOLIONOMICS
                     </Typography>
-
-
-
-
 
                     {/* Collapsed Menue */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
