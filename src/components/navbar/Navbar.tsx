@@ -3,7 +3,7 @@ import { FC, useState, MouseEvent } from 'react'
 import AppBar from '@mui/material/AppBar';
 import { Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import SignupDialog from '@/container/SignupDialog';
 
 const pages = {
     Pricing: "pricing",
@@ -17,6 +17,7 @@ const settingsMenu = { 'Profile': "profile", 'Settings': "settings", 'Logout': "
 const Navbar: FC = () => {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -32,6 +33,10 @@ const Navbar: FC = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handleLogin = () => {
+        setIsLoggedIn(true)
+    }
 
     return (
         <AppBar position="static" sx={{ backgroundColor: 'white' }}>
@@ -136,7 +141,7 @@ const Navbar: FC = () => {
                     </Typography>
 
                     {/* Avatar Top Right */}
-                    <Box sx={{ flexGrow: 0 }}>
+                    {!isLoggedIn ? <SignupDialog onClick={handleLogin} /> : <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -168,7 +173,7 @@ const Navbar: FC = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
-                    </Box>
+                    </Box>}
                 </Toolbar>
             </Container>
         </AppBar >

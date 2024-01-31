@@ -4,8 +4,11 @@ import Typography from '@mui/material/Typography';
 import { TextField } from '@mui/material';
 import Modal from '@/components/modal/modal';
 
+interface SignupProps {
+    onClick: () => void
+}
 
-const SignupDialog: FC = () => {
+const SignupDialog: FC<SignupProps> = ({ onClick }) => {
 
     return (
         <Modal title="Sign up with Email" openModalButton='Sign Up'>
@@ -14,7 +17,7 @@ const SignupDialog: FC = () => {
             <TextField fullWidth label="Email" margin="normal" />
             <TextField fullWidth label="Password" type="password" margin="normal" />
             <TextField fullWidth label="Confirm Password" type="password" margin="normal" />
-            <Button variant="contained" color="success" fullWidth>
+            <Button variant="contained" color="success" onClick={onClick} fullWidth>
                 Sign Up
             </Button>
             <Typography sx={{ mt: 2, textAlign: 'center' }}>
