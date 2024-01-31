@@ -19,7 +19,7 @@ const LoginDialog: FC<LoginProps> = ( ) => {
             <TextField fullWidth label="Password" type="password" margin="normal" />
             
             <Typography sx={{ textAlign: 'right', mb: 2 }}>
-                Don't have an account? <Typography component="a" href='#' >Signup</Typography>
+                Don&rsquo;t have an account? <Typography component="a" href='#' >Signup</Typography>
             </Typography>
 
             <Button variant="contained" color="success" fullWidth
