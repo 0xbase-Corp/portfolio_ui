@@ -1,6 +1,6 @@
 'use client'
 
-import LoginDialog from "@/container/LoginDialog"
+import LoginDialog from "@/container/login/LoginDialog"
 
 
 export default function Home() {
