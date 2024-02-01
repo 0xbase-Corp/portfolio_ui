@@ -8,11 +8,7 @@ import SignupDialog from './SignupDialog';
 
 
 const LoginDialog: FC = ( ) => {
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-    const handleLogin = () => {
-        setIsLoggedIn(true)
-    }
-
+    
 
     return (
         <Modal title="Login" openModalButton='Login'>
@@ -22,7 +18,7 @@ const LoginDialog: FC = ( ) => {
             
             <Typography sx={{ textAlign: 'right', mb: 2 }}>
                 Don&rsquo;t have an account? 
-                <Typography component="span" style={{ cursor: 'pointer', color: 'blue' }} ><SignupDialog onClick={handleLogin} /> </Typography>
+                <Typography component="span" style={{ cursor: 'pointer', color: 'blue' }} >  <SignupDialog /> </Typography>
             </Typography>
 
             <Button variant="contained" color="success" fullWidth sx={{ mb: 2}}>
