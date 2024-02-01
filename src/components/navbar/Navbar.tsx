@@ -3,7 +3,7 @@ import { FC, useState, MouseEvent } from 'react'
 import AppBar from '@mui/material/AppBar';
 import { Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SignupDialog from '@/container/SignupDialog';
+import SignupDialog from '@/container/signup/SignupDialog';
 
 const pages = {
     Pricing: "pricing",
