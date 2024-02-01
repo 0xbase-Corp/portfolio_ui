@@ -1,16 +1,18 @@
-import { FC } from 'react';
+import { FC, useState } from 'react'; // Import useState
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { TextField } from '@mui/material';
 import Modal from '@/components/modal/modal';
-import CustomDivider from '@/components/divider/CustomDivider';
+import Divider from '@/components/divider/Divider';
+import SignupDialog from './SignupDialog';
 
-interface LoginProps {
-    onSignupClick: () => void;
-    onConnectWalletClick: () => void;
-}
 
-const LoginDialog: FC<LoginProps> = ( ) => {
+const LoginDialog: FC = ( ) => {
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+    const handleLogin = () => {
+        setIsLoggedIn(true)
+    }
+
 
     return (
         <Modal title="Login" openModalButton='Login'>
@@ -19,21 +21,20 @@ const LoginDialog: FC<LoginProps> = ( ) => {
             <TextField fullWidth label="Password" type="password" margin="normal" />
             
             <Typography sx={{ textAlign: 'right', mb: 2 }}>
-                Don&rsquo;t have an account? <Typography component="a" href='#' >Signup</Typography>
+                Don&rsquo;t have an account? 
+                <Typography component="span" style={{ cursor: 'pointer', color: 'blue' }} ><SignupDialog onClick={handleLogin} /> </Typography>
             </Typography>
 
-            <Button variant="contained" color="success" fullWidth
-            sx={{ mb: 2}}
-            >
+            <Button variant="contained" color="success" fullWidth sx={{ mb: 2}}>
                 Login
             </Button>
 
-            <CustomDivider title="OR"  />
+            <Divider title="OR"  />
 
-            
             <Button variant="outlined" color="primary" fullWidth >
                 Connect Wallet
             </Button>
+
         </Modal>
     );
 };

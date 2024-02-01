@@ -7,7 +7,7 @@ interface DividerProps {
 }
 
 
-const CustomDivider: FC<DividerProps> = ({ title }) => {
+const Divider: FC<DividerProps> = ({ title }) => {
     return (
         <MuiDivider sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', mb: 2,  }}>
                  <Typography sx={{ margin: '0 8px' }}>{title}</Typography>
@@ -17,4 +17,4 @@ const CustomDivider: FC<DividerProps> = ({ title }) => {
     );
 };
 
-export default CustomDivider;
+export default Divider;
