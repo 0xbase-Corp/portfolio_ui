@@ -5,7 +5,7 @@ import { TextField } from '@mui/material';
 import Modal from '@/components/modal/modal';
 
 interface SignupProps {
-    onClick?: () => void
+    onClick: () => void
 }
 
 const SignupDialog: FC<SignupProps> = ({ onClick }) => {
