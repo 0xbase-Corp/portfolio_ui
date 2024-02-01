@@ -1,17 +1,12 @@
-import { FC } from 'react';
-
-import { Button as MuiButton } from '@mui/material';
+import { Button as MuiButton } from '@mui/material'
+import { FC } from 'react'
 
 interface ButtonProps {
-    title: string
-
+  title: string
 }
 
 const Button: FC<ButtonProps> = ({ title }) => {
-    return (
-        <MuiButton>{title}</MuiButton>
-    )
+  return <MuiButton>{title}</MuiButton>
 }
-
 
 export default Button

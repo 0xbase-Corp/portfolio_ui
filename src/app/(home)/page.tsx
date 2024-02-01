@@ -1,11 +1,10 @@
 'use client'
 
-import LoginDialog from "@/container/login/LoginDialog"
-
+import LoginDialog from '@/views/LoginDialog'
 
 export default function Home() {
   return (
-    <main >
+    <main>
       <h1>Landing Home Page</h1>
       <LoginDialog />
     </main>
