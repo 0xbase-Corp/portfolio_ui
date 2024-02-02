@@ -29,59 +29,61 @@ const footerContent = [
   [
     'Folio Nomics',
     '©2024-2025',
-    <Link href="/privacy" underline="none">
+    <Link key="footer-link-1" href="/privacy" underline="none">
       Privacy
     </Link>,
   ],
   [
     'Product',
-    <Link href="/product" underline="none">
+    <Link key="footer-link-2" href="/product" underline="none">
       product
     </Link>,
-    <Link href="/product" underline="none">
+    <Link key="footer-link-3" href="/product" underline="none">
       product
     </Link>,
-    <Link href="/product" underline="none">
+    <Link key="footer-link-4" href="/product" underline="none">
       product
     </Link>,
   ],
   [
     'Feature',
-    <Link href="/feature" underline="none">
+    <Link key="footer-link-5" href="/feature" underline="none">
       feature
     </Link>,
-    <Link href="/feature" underline="none">
+    <Link key="footer-link-6" href="/feature" underline="none">
       feature
     </Link>,
-    <Link href="/feature" underline="none">
+    <Link key="footer-link-7" href="/feature" underline="none">
       feature
     </Link>,
   ],
   [
     'Resources',
-    <Link href="/resources" underline="none">
+    <Link key="footer-link-8" href="/resources" underline="none">
       resources
     </Link>,
-    <Link href="/resources" underline="none">
+    <Link key="footer-link-9" href="/resources" underline="none">
       resources
     </Link>,
-    <Link href="/resources" underline="none">
+    <Link key="footer-link-10" href="/resources" underline="none">
       resources
     </Link>,
   ],
   [
     'Company',
-    <Link href="/company" underline="none">
+    <Link key="footer-link-11" href="/company" underline="none">
       company
     </Link>,
-    <Link href="/company" underline="none">
+    <Link key="footer-link-12" href="/company" underline="none">
       company
     </Link>,
-    <Link href="/company" underline="none">
+    <Link key="footer-link-13" href="/company" underline="none">
       company
     </Link>,
   ],
 ]
+
+// ... (existing code)
 
 const Footer = () => {
   return (
