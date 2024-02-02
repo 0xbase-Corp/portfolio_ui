@@ -14,8 +14,9 @@ export default function Home() {
     <main>
       <h1>Landing Home Page</h1>
       <LoginDialog />
-      <Footer />
       <Button title="Click Me" onClick={simulateAsyncTask} />
+      <Footer />
+     
     </main>
   )
 }
