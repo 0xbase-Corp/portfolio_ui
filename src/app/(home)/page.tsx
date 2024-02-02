@@ -16,7 +16,6 @@ export default function Home() {
       <LoginDialog />
       <Button title="Click Me" onClick={simulateAsyncTask} />
       <Footer />
-     
     </main>
   )
 }
