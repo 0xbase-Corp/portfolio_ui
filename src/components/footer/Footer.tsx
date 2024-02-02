@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import Grid from '@material-ui/core/Grid';
-import { Typography } from '@mui/material';
-import Divider from '@mui/material/Divider';
-import styled from 'styled-components';
+import Grid from '@material-ui/core/Grid'
+import { Typography } from '@mui/material'
+import Divider from '@mui/material/Divider'
+import styled from 'styled-components'
 
 const StyledFooter = styled(Grid)`
   padding: 20px;
@@ -11,16 +11,13 @@ const StyledFooter = styled(Grid)`
   justify-content: center;
   align-items: center;
   text-align: center;
-  
-`;
+`
 
 const StyledColumn = styled(Grid)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-
-`;
+`
 
 const footerContent = [
   ['Folio Nomics', '©2024-2025', 'Privacy'],
@@ -28,7 +25,7 @@ const footerContent = [
   ['Feature', 'feature', 'feature', 'feature'],
   ['Resources', 'resources', 'resources', 'resources'],
   ['Company', 'company', 'company', 'company'],
-];
+]
 
 const Footer = () => {
   return (
@@ -53,7 +50,7 @@ const Footer = () => {
         ))}
       </StyledFooter>
     </>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
