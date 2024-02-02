@@ -1,6 +1,6 @@
 'use client'
 
-import Grid from '@material-ui/core/Grid'
+import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material'
 import Divider from '@mui/material/Divider'
 import styled from 'styled-components'
