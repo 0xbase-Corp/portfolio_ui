@@ -1,6 +1,6 @@
 'use client'
 
-import { Typography } from '@mui/material'
+import { Link, Typography } from '@mui/material'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import styled from 'styled-components'
@@ -19,17 +19,73 @@ const StyledColumn = styled(Grid)`
   align-items: center;
 `
 
+const PositionedFooter = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+`
+
 const footerContent = [
-  ['Folio Nomics', '©2024-2025', 'Privacy'],
-  ['Product', 'product', 'product', 'product'],
-  ['Feature', 'feature', 'feature', 'feature'],
-  ['Resources', 'resources', 'resources', 'resources'],
-  ['Company', 'company', 'company', 'company'],
+  [
+    'Folio Nomics',
+    '©2024-2025',
+    <Link href="/privacy" underline="none">
+      Privacy
+    </Link>,
+  ],
+  [
+    'Product',
+    <Link href="/product" underline="none">
+      product
+    </Link>,
+    <Link href="/product" underline="none">
+      product
+    </Link>,
+    <Link href="/product" underline="none">
+      product
+    </Link>,
+  ],
+  [
+    'Feature',
+    <Link href="/feature" underline="none">
+      feature
+    </Link>,
+    <Link href="/feature" underline="none">
+      feature
+    </Link>,
+    <Link href="/feature" underline="none">
+      feature
+    </Link>,
+  ],
+  [
+    'Resources',
+    <Link href="/resources" underline="none">
+      resources
+    </Link>,
+    <Link href="/resources" underline="none">
+      resources
+    </Link>,
+    <Link href="/resources" underline="none">
+      resources
+    </Link>,
+  ],
+  [
+    'Company',
+    <Link href="/company" underline="none">
+      company
+    </Link>,
+    <Link href="/company" underline="none">
+      company
+    </Link>,
+    <Link href="/company" underline="none">
+      company
+    </Link>,
+  ],
 ]
 
 const Footer = () => {
   return (
-    <>
+    <PositionedFooter>
       <Divider variant="middle" />
       <StyledFooter container>
         {footerContent.map((column, index) => (
@@ -49,7 +105,7 @@ const Footer = () => {
           </StyledColumn>
         ))}
       </StyledFooter>
-    </>
+    </PositionedFooter>
   )
 }
 
