@@ -17,6 +17,7 @@ const Waitlist = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    email: '',
     yearsOfExperience: '',
     toolUsage: '',
   })
@@ -75,6 +76,14 @@ const Waitlist = () => {
           margin="normal"
         />
         <TextField
+          label="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
           label="Years of Experience"
           name="yearsOfExperience"
           value={formData.yearsOfExperience}
@@ -86,7 +95,7 @@ const Waitlist = () => {
           <InputLabel>How will you use the tool?</InputLabel>
           <Select
             label="How will you use the tool?"
-            name="toolUsage"
+            name="toolUsage"  
             value={formData.toolUsage}
             onChange={handleChange}
           >
