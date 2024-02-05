@@ -1,28 +1,28 @@
-import MuiButton from '@mui/material/Button'
-import CircularProgress from '@mui/material/CircularProgress'
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface ButtonProps {
-  title: string
-  onClick: () => Promise<void>
+  title: string;
+  onClick: () => Promise<void>;
+  setLoading: (loading: boolean) => void;
+  loading: boolean; // Add loading prop
 }
 
-const Button: FC<ButtonProps> = ({ title, onClick }) => {
-  const [loading, setLoading] = useState(false)
-
+const LoadingButton: FC<ButtonProps> = ({ title, onClick, setLoading, loading }) => {
   return (
-    <MuiButton
+    <Button
       onClick={() => {
-        setLoading(true)
-        onClick().finally(() => setLoading(false))
+        setLoading(true);
+        onClick().finally(() => setLoading(false));
       }}
       disabled={loading}
       variant="contained"
       color="primary"
     >
       {loading ? <CircularProgress size={24} color="inherit" /> : title}
-    </MuiButton>
-  )
-}
+    </Button>
+  );
+};
 
-export default Button
+export default LoadingButton;
