@@ -1,20 +1,20 @@
-import React, { FC } from 'react';
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
+import React, { FC } from 'react'
 
 interface ButtonProps {
-  title: string;
-  onClick: () => Promise<void>;
-  setLoading: (loading: boolean) => void;
-  loading: boolean; // Add loading prop
+  title: string
+  onClick: () => Promise<void>
+  setLoading: (loading: boolean) => void
+  loading: boolean // Add loading prop
 }
 
 const LoadingButton: FC<ButtonProps> = ({ title, onClick, setLoading, loading }) => {
   return (
     <Button
       onClick={() => {
-        setLoading(true);
-        onClick().finally(() => setLoading(false));
+        setLoading(true)
+        onClick().finally(() => setLoading(false))
       }}
       disabled={loading}
       variant="contained"
@@ -22,7 +22,7 @@ const LoadingButton: FC<ButtonProps> = ({ title, onClick, setLoading, loading })
     >
       {loading ? <CircularProgress size={24} color="inherit" /> : title}
     </Button>
-  );
-};
+  )
+}
 
-export default LoadingButton;
+export default LoadingButton
