@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 interface ButtonProps {
   title: string
   onClick: () => Promise<void>
-  setLoading: (loading: boolean) => void
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
   loading: boolean // Add loading prop
 }
 
