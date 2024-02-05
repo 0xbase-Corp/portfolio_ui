@@ -34,7 +34,6 @@ const Waitlist = () => {
     e.preventDefault()
 
     try {
-     
       const response = await fetch('/api/v1/waitlist', {
         method: 'POST',
         headers: {
@@ -95,7 +94,7 @@ const Waitlist = () => {
           <InputLabel>How will you use the tool?</InputLabel>
           <Select
             label="How will you use the tool?"
-            name="toolUsage"  
+            name="toolUsage"
             value={formData.toolUsage}
             onChange={handleChange}
           >
