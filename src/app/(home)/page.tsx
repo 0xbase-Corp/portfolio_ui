@@ -1,5 +1,6 @@
 'use client'
 
+import Footer from '@/components/footer/Footer'
 import LoginDialog from '@/views/LoginDialog'
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <main>
       <h1>Landing Home Page</h1>
       <LoginDialog />
+      <Footer />
     </main>
   )
 }
