@@ -5,17 +5,15 @@ import React, { FC } from 'react'
 interface ButtonProps {
   title: string
   onClick: () => Promise<void>
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  loading: boolean // Add loading prop
+  loading: boolean 
 }
 
 const LoadingButton: FC<ButtonProps> = ({ title, onClick, setLoading, loading }) => {
   return (
     <Button
       onClick={() => {
-        setLoading(true)
-        onClick().finally(() => setLoading(false))
-      }}
+      onClick().finally(() => {})
+    }}
       disabled={loading}
       variant="contained"
       color="primary"

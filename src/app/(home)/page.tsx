@@ -23,7 +23,7 @@ export default function Home() {
     <main>
       <h1>Landing Home Page</h1>
       <LoginDialog />
-      <LoadingButton title="Click me" onClick={handleButtonClick} setLoading={setLoading} loading={loading} />
+      <LoadingButton title="Click me" onClick={handleButtonClick} loading={loading} />
       <Footer />
     </main>
   )
