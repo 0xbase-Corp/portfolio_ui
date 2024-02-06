@@ -1,8 +1,9 @@
 'use client'
 
 import MenuIcon from '@mui/icons-material/Menu'
-import { Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import { Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
+import { usePrivy } from '@privy-io/react-auth'
 import { FC, MouseEvent, useState } from 'react'
 
 import SignupDialog from '@/views/SignupDialog'
@@ -39,6 +40,7 @@ const Navbar: FC = () => {
     setIsLoggedIn(true)
   }
 
+  const { login } = usePrivy()
   return (
     <AppBar position="static" sx={{ backgroundColor: 'background.default' }}>
       <Container maxWidth="xl">
@@ -148,7 +150,7 @@ const Navbar: FC = () => {
 
           {/* Avatar Top Right */}
           {!isLoggedIn ? (
-            <SignupDialog onClick={handleLogin} />
+            <Button onClick={login}>Connect Wallet</Button>
           ) : (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">

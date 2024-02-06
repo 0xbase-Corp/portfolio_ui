@@ -17,7 +17,7 @@ export const MyApp = ({ Component, pageProps }: AppProps) => {
         appearance: {
           theme: 'light',
           accentColor: '#676FFF',
-          logo: 'https://your-logo-url',
+          logo: 'https://unsplash.com/photos/two-electronic-devices-sitting-next-to-each-other-VLZ6YOEIN-w',
         },
       }}
     >
