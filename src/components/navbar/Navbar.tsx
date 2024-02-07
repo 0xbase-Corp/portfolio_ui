@@ -10,7 +10,7 @@ import SignupDialog from '@/views/SignupDialog'
 const pages = {
   Pricing: 'pricing',
   Dashboard: 'dashboard',
-  'Contact Us': 'contact-us',
+  Waitlist: 'waitlist',
 }
 
 const settingsMenu = { Profile: 'profile', Settings: 'settings', Logout: 'logout', Dashboard: 'dashboard' }
