@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@mui/material'
 import React, { FC, useState } from 'react'
+
 import LoadingButton from '@/components/loadingbutton/LoadingButton'
 
 const WaitlistForm: FC = () => {
@@ -111,7 +112,7 @@ const WaitlistForm: FC = () => {
           fullWidth
           margin="normal"
         />
-        <FormControl fullWidth margin="normal" sx={{mb: 3}}>
+        <FormControl fullWidth margin="normal" sx={{ mb: 3 }}>
           <InputLabel>How will you use the tool?</InputLabel>
           <Select
             label="How will you use the tool?"
