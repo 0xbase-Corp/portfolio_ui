@@ -2,8 +2,9 @@
 
 import { PrivyProvider } from '@privy-io/react-auth'
 import { useRouter } from 'next/navigation'
+import { FC, ReactNode } from 'react'
 
-export default function PrivyProviderWrapper({ children }: { children: React.ReactNode }) {
+const PrivyProviderWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
   return (
     <PrivyProvider appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ''} onSuccess={() => router.push('/dashboard')}>
@@ -11,3 +12,5 @@ export default function PrivyProviderWrapper({ children }: { children: React.Rea
     </PrivyProvider>
   )
 }
+
+export default PrivyProviderWrapper

@@ -10,14 +10,7 @@ interface ButtonProps {
 
 const LoadingButton: FC<ButtonProps> = ({ title, onClick, loading }) => {
   return (
-    <Button
-      onClick={() => {
-        onClick().finally(() => {})
-      }}
-      disabled={loading}
-      variant="contained"
-      color="primary"
-    >
+    <Button onClick={onClick} disabled={loading} variant="contained" color="primary">
       {loading ? <CircularProgress size={24} color="inherit" /> : title}
     </Button>
   )

@@ -1,12 +1,11 @@
 'use client'
 
 import MenuIcon from '@mui/icons-material/Menu'
-import { Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import { Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
-import { usePrivy } from '@privy-io/react-auth'
 import { FC, MouseEvent, useState } from 'react'
 
-import SignupDialog from '@/views/SignupDialog'
+import ConnectWallet from '@/containers/connectWallet/ConnectWallet'
 
 const pages = {
   Pricing: 'pricing',
@@ -19,7 +18,7 @@ const settingsMenu = { Profile: 'profile', Settings: 'settings', Logout: 'logout
 const Navbar: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const isLoggedIn = true
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -36,11 +35,6 @@ const Navbar: FC = () => {
     setAnchorElUser(null)
   }
 
-  const handleLogin = () => {
-    setIsLoggedIn(true)
-  }
-
-  const { login } = usePrivy()
   return (
     <AppBar position="static" sx={{ backgroundColor: 'background.default' }}>
       <Container maxWidth="xl">
@@ -149,8 +143,8 @@ const Navbar: FC = () => {
           </Typography>
 
           {/* Avatar Top Right */}
-          {!isLoggedIn ? (
-            <Button onClick={login}>Connect Wallet</Button>
+          {isLoggedIn ? (
+            <ConnectWallet />
           ) : (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
