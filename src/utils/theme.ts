@@ -1,6 +1,5 @@
 'use client'
 
-
 import { colors, createTheme } from '@mui/material'
 
 export const lightTheme = createTheme({
@@ -20,13 +19,13 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   palette: {
     primary: {
-      main: colors.grey[50], 
+      main: colors.grey[50],
     },
     secondary: {
-      main: colors.cyan[300], 
+      main: colors.cyan[300],
     },
     background: {
-      default: colors.blueGrey[900], 
+      default: colors.blueGrey[900],
     },
     mode: 'dark',
   },
