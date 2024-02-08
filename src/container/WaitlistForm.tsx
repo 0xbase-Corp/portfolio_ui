@@ -13,6 +13,7 @@ import {
 import React, { FC, useState } from 'react'
 
 import LoadingButton from '@/components/loadingbutton/LoadingButton'
+import { validateEmail } from '@/utils/helper'
 
 const WaitlistForm: FC = () => {
   const [formData, setFormData] = useState({
@@ -37,16 +38,12 @@ const WaitlistForm: FC = () => {
     }
   }
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     setLoading(true)
     if (!validateEmail(formData.email)) {
       setEmailError('Please enter a valid email address')
+      setLoading(false)
       return
     }
 
