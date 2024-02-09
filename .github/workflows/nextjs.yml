@@ -42,5 +42,8 @@ jobs:
         run: npx prettier . --check
       - name: Run Linter
         run: npm run lint
+      - name: Setup .env
+        run: |
+          echo "NEXT_PUBLIC_PRIVY_APP_ID=${{ secrets.NEXT_PUBLIC_PRIVY_APP_ID }}" > .env
       - name: Build with Next.js
         run: npm run build
