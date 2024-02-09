@@ -6,6 +6,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import React from 'react'
 
 import Navbar from '@/components/navbar/Navbar'
+import PrivyProviderWrapper from '@/components/privyWrapper/PrivyWrapper'
 import { theme } from '@/utils/theme'
 
 export const metadata = {
@@ -17,13 +18,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head></head>
       <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Navbar />
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <PrivyProviderWrapper>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Navbar />
+              {children}
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </PrivyProviderWrapper>
       </body>
     </html>
   )

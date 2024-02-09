@@ -1,1 +1,3 @@
-- @fuddin95
+- @mandatory-codeowner
+
+* @fuddin95
