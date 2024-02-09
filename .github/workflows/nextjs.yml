@@ -32,22 +32,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Node
+      - name: 🫥 Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install dependencies
+      - name: 👍 Install dependencies
         run: npm install
-      - name: Run Prettier
+      - name: 💅 Run Prettier
         run: npx prettier . --check
-      - name: Run Linter
+      - name: 🙏 Run Linter
         run: npm run lint
-      - name: Setup .env
-        run: echo "PRIVY_APP_ID=${{secrets.PRIVY_APP_ID }}" > .env
-      - name: Read Env variable
-        run: echo " My Privy App ID in env file is ${{ env.PRIVY_APP_ID }}"
-
-      - name: Build with Next.js
+      - name: 🫡 Build with Next.js
         run: npm run build
         env:
           PRIVY_APP_ID: ${{secrets.PRIVY_APP_ID }}
