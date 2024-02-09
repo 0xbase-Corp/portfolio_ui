@@ -5,7 +5,7 @@ import { Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, T
 import AppBar from '@mui/material/AppBar'
 import { FC, MouseEvent, useState } from 'react'
 
-import SignupDialog from '@/views/SignupDialog'
+import ConnectWallet from '@/containers/connectWallet/ConnectWallet'
 
 const pages = {
   Pricing: 'pricing',
@@ -18,7 +18,7 @@ const settingsMenu = { Profile: 'profile', Settings: 'settings', Logout: 'logout
 const Navbar: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const isLoggedIn = true
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -33,10 +33,6 @@ const Navbar: FC = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
-  }
-
-  const handleLogin = () => {
-    setIsLoggedIn(true)
   }
 
   return (
@@ -147,8 +143,8 @@ const Navbar: FC = () => {
           </Typography>
 
           {/* Avatar Top Right */}
-          {!isLoggedIn ? (
-            <SignupDialog onClick={handleLogin} />
+          {isLoggedIn ? (
+            <ConnectWallet />
           ) : (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
