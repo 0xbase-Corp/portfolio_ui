@@ -12,15 +12,22 @@ import React, { useState } from 'react'
 import Navbar from '@/components/navbar/Navbar'
 import { darkTheme, lightTheme } from '@/utils/theme'
 
+
+
 // export const metadata = {
 //   title: 'Porfolio Meta',
 //   description: 'One place to view all your assets',
 // }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [darkMode, setDarkMode] = useState(false)
 
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedDarkMode = localStorage.getItem('darkMode');
+    return savedDarkMode ? JSON.parse(savedDarkMode) : false;
+  });
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
   }
 
   return (
