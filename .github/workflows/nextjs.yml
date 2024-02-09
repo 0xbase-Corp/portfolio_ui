@@ -43,8 +43,10 @@ jobs:
       - name: Run Linter
         run: npm run lint
       - name: Setup .env
-        run: echo "NEXT_PUBLIC_PRIVY_APP_ID=${{ secrets.PRIVY_APP_ID }}" > .env
+        run: echo "NEXT_PUBLIC_PRIVY_APP_ID=${{secrets.PRIVY_APP_ID }}" > .env
         env:
-          NEXT_PUBLIC_PRIVY_APP_ID: ${{ secrets.PRIVY_APP_ID }}
+          NEXT_PUBLIC_PRIVY_APP_ID: ${{secrets.PRIVY_APP_ID }}
+      - name: Read Env variable
+        run: echo " My Privy App ID in env file is ${{ env.PRIVY_APP_ID }}"
       - name: Build with Next.js
         run: npm run build
