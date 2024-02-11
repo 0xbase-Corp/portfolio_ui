@@ -11,7 +11,7 @@ const PrivyProviderWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   }
   return (
     <PrivyProvider
-      appId={process.env.PRIVY_APP_ID || ''}
+      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!}
       onSuccess={handleSuccess}
       config={{
         loginMethods: ['wallet'],

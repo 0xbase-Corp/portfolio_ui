@@ -13,12 +13,6 @@ const StyledFooter = styled(Grid)`
   text-align: center;
 `
 
-const StyledColumn = styled(Grid)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
 const PositionedFooter = styled.div`
   position: absolute;
   bottom: 0;
@@ -91,7 +85,7 @@ const Footer = () => {
       <Divider variant="middle" />
       <StyledFooter container>
         {footerContent.map((column, index) => (
-          <StyledColumn key={index} item xs={12} sm={2}>
+          <Grid key={index} item xs={12} sm={2}>
             {column.map((text, i) => (
               <Typography
                 sx={{
@@ -104,7 +98,7 @@ const Footer = () => {
                 {text}
               </Typography>
             ))}
-          </StyledColumn>
+          </Grid>
         ))}
       </StyledFooter>
     </PositionedFooter>
