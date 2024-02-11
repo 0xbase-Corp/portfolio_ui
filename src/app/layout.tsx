@@ -1,8 +1,9 @@
 import './styles/globals.css'
 
-import React from 'react'
 import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
+import React from 'react'
+
 import Navbar from '@/components/navbar/Navbar'
 import PrivyProviderWrapper from '@/components/privyWrapper/PrivyWrapper'
 import ThemeWrapper from '@/components/themeWrapper/ThemeWrapper'
@@ -13,12 +14,11 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
   return (
     <html lang="en">
       <head></head>
       <body>
-        {/* <PrivyProviderWrapper> */}
+        <PrivyProviderWrapper>
           <AppRouterCacheProvider>
             <ThemeWrapper>
               <CssBaseline />
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {children}
             </ThemeWrapper>
           </AppRouterCacheProvider>
-        {/* </PrivyProviderWrapper> */}
+        </PrivyProviderWrapper>
       </body>
     </html>
   )
