@@ -18,15 +18,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head></head>
       <body>
-        <PrivyProviderWrapper>
-          <AppRouterCacheProvider>
-            <ThemeWrapper>
+        <AppRouterCacheProvider>
+          <ThemeWrapper>
+            <PrivyProviderWrapper>
               <CssBaseline />
               <Navbar />
               {children}
-            </ThemeWrapper>
-          </AppRouterCacheProvider>
-        </PrivyProviderWrapper>
+            </PrivyProviderWrapper>
+          </ThemeWrapper>
+        </AppRouterCacheProvider>
       </body>
     </html>
   )
