@@ -13,7 +13,6 @@ const StyledFooter = styled(Grid)`
   text-align: center;
 `
 
-
 const PositionedFooter = styled.div`
   position: absolute;
   bottom: 0;
