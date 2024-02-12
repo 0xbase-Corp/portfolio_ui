@@ -20,11 +20,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <AppRouterCacheProvider>
           <ThemeWrapper>
-            <PrivyProviderWrapper>
+            {/* <PrivyProviderWrapper> */}
               <CssBaseline />
               <Navbar />
               {children}
-            </PrivyProviderWrapper>
+            {/* </PrivyProviderWrapper> */}
           </ThemeWrapper>
         </AppRouterCacheProvider>
       </body>
