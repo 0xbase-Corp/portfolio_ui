@@ -21,9 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AppRouterCacheProvider>
           <ThemeWrapper>
             <PrivyProviderWrapper>
-            <CssBaseline />
-            <Navbar />
-            {children}
+              <CssBaseline />
+              <Navbar />
+              {children}
             </PrivyProviderWrapper>
           </ThemeWrapper>
         </AppRouterCacheProvider>
