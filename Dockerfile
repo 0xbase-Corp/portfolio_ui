@@ -1,32 +1,18 @@
-# Use a smaller base image
-FROM node:18.17.1-alpine AS build
+FROM node:18-alpine as builder
+WORKDIR /my-space
 
-# Set working directory inside the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json to work directory
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install --production
-
-# Copy the rest of the application code
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
-
-# Build the Next.js application
 RUN npm run build
 
-# Use a minimal base image for runtime
-FROM node:18.17.1-alpine
-
-# Set working directory inside the container
-WORKDIR /app
-
-# Copy built files from the previous stage
-COPY --from=build /app .
-
-# Expose the port that Next.js is running on
+FROM node:18-alpine as runner
+WORKDIR /my-space
+COPY --from=builder /my-space/package.json .
+COPY --from=builder /my-space/package-lock.json .
+COPY --from=builder /my-space/next.config.js ./
+COPY --from=builder /my-space/public ./public
+COPY --from=builder /my-space/.next/standalone ./
+COPY --from=builder /my-space/.next/static ./.next/static
 EXPOSE 3000
-
-# Start the Next.js application
-CMD ["npm", "start"]
+ENTRYPOINT ["npm", "start"]
