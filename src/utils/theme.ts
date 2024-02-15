@@ -13,6 +13,7 @@ export const lightTheme = createTheme({
     background: {
       default: colors.blueGrey[50],
     },
+    mode: 'light',
   },
 })
 

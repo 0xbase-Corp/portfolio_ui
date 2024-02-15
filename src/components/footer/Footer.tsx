@@ -23,55 +23,55 @@ const footerContent = [
   [
     'Folio Nomics',
     '©2024-2025',
-    <Link key="footer-link-1" href="/privacy" underline="none">
+    <Link key="footer-link-1" href="/privacy" underline="none" color="inherit">
       Privacy
     </Link>,
   ],
   [
     'Product',
-    <Link key="footer-link-2" href="/product" underline="none">
+    <Link key="footer-link-2" href="/product" underline="none" color="inherit">
       product
     </Link>,
-    <Link key="footer-link-3" href="/product" underline="none">
+    <Link key="footer-link-3" href="/product" underline="none" color="inherit">
       product
     </Link>,
-    <Link key="footer-link-4" href="/product" underline="none">
+    <Link key="footer-link-4" href="/product" underline="none" color="inherit">
       product
     </Link>,
   ],
   [
     'Feature',
-    <Link key="footer-link-5" href="/feature" underline="none">
+    <Link key="footer-link-5" href="/feature" underline="none" color="inherit">
       feature
     </Link>,
-    <Link key="footer-link-6" href="/feature" underline="none">
+    <Link key="footer-link-6" href="/feature" underline="none" color="inherit">
       feature
     </Link>,
-    <Link key="footer-link-7" href="/feature" underline="none">
+    <Link key="footer-link-7" href="/feature" underline="none" color="inherit">
       feature
     </Link>,
   ],
   [
     'Resources',
-    <Link key="footer-link-8" href="/resources" underline="none">
+    <Link key="footer-link-8" href="/resources" underline="none" color="inherit">
       resources
     </Link>,
-    <Link key="footer-link-9" href="/resources" underline="none">
+    <Link key="footer-link-9" href="/resources" underline="none" color="inherit">
       resources
     </Link>,
-    <Link key="footer-link-10" href="/resources" underline="none">
+    <Link key="footer-link-10" href="/resources" underline="none" color="inherit">
       resources
     </Link>,
   ],
   [
     'Company',
-    <Link key="footer-link-11" href="/company" underline="none">
+    <Link key="footer-link-11" href="/company" underline="none" color="inherit">
       company
     </Link>,
-    <Link key="footer-link-12" href="/company" underline="none">
+    <Link key="footer-link-12" href="/company" underline="none" color="inherit">
       company
     </Link>,
-    <Link key="footer-link-13" href="/company" underline="none">
+    <Link key="footer-link-13" href="/company" underline="none" color="inherit">
       company
     </Link>,
   ],

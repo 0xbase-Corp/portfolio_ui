@@ -1,0 +1,10 @@
+# Ignore development dependencies
+node_modules/
+
+# Ignore build output
+.next/
+
+# Ignore any local development files or directories
+.env
+.eslintrc.json
+.git/
