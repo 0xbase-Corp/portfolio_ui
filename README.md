@@ -6,6 +6,10 @@ npm run dev
 npm run build
 # To Format
 npx prettier . --write
+# To Build Docker Image
+docker build -t my-next-app .
+# To run Docker Image
+docker run -p 3000:3000 my-next-app
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
