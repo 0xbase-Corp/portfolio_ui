@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  my-next-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-next-app
+    ports:
+      - "3000:3000"
