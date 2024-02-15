@@ -1,18 +1,20 @@
-FROM node:18-alpine as builder
-WORKDIR /my-space
+FROM node:21-alpine as builder
+
+WORKDIR /app
+RUN apk add --no-cache python3 make g++
 
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:18-alpine as runner
-WORKDIR /my-space
-COPY --from=builder /my-space/package.json .
-COPY --from=builder /my-space/package-lock.json .
-COPY --from=builder /my-space/next.config.js ./
-COPY --from=builder /my-space/public ./public
-COPY --from=builder /my-space/.next/standalone ./
-COPY --from=builder /my-space/.next/static ./.next/static
+FROM node:21-alpine as runner
+WORKDIR /app
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
 EXPOSE 3000
-ENTRYPOINT ["npm", "start"]
+
+CMD ["node", "server.js"]
