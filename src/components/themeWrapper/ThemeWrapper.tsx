@@ -28,7 +28,7 @@ const ThemeWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       {children}
-      <Button onClick={toggleTheme}>{isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}</Button>
+      <Button sx={{ml: 96}} onClick={toggleTheme}>{isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}</Button>
     </ThemeProvider>
   )
 }

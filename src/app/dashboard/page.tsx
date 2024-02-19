@@ -1,7 +1,9 @@
+import PermanentDrawerLeft from "@/components/drawer/Drawer"
+
 export default function Dashboard() {
   return (
     <main>
-      <h1>Dashboard</h1>
+      <PermanentDrawerLeft />
     </main>
   )
 }
