@@ -4,7 +4,6 @@ import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import React from 'react'
 
-import Navbar from '@/components/navbar/Navbar'
 import PrivyProviderWrapper from '@/components/privyWrapper/PrivyWrapper'
 import ThemeWrapper from '@/components/themeWrapper/ThemeWrapper'
 
@@ -22,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ThemeWrapper>
             <PrivyProviderWrapper>
               <CssBaseline />
-              <Navbar />
               {children}
             </PrivyProviderWrapper>
           </ThemeWrapper>

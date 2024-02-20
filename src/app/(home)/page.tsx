@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import Footer from '@/components/footer/Footer'
 import LoadingButton from '@/components/loadingbutton/LoadingButton'
+import Navbar from '@/components/navbar/Navbar'
 import LoginDialog from '@/views/LoginDialog'
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
   }
   return (
     <main>
+      <Navbar />
       <h1>Landing Home Page</h1>
       <LoginDialog />
       <LoadingButton title="Click me" onClick={handleButtonClick} loading={loading} />
