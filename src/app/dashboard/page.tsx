@@ -1,5 +1,3 @@
-'use client'
-
 import ResponsiveDrawer from '@/components/drawer/Drawer'
 
 export default function Dashboard() {
