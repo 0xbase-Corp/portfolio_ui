@@ -41,7 +41,6 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
       setMobileOpen(!mobileOpen)
     }
   }
-  console.log(drawerContent)
 
   const drawerItems = (
     <div>
