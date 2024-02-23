@@ -1,3 +1,10 @@
+interface RequestInit {
+  method?: string
+  headers?: Record<string, string>
+  body?: any
+  [key: string]: any
+}
+
 async function callApi(endpoint: string, method: string = 'GET', body: any = null, options: RequestInit = {}) {
   const url = `${process.env.NEXT_PUBLIC_BACKEND_LOCAL_URL}${endpoint}`
   try {
