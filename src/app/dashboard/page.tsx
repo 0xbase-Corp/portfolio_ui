@@ -2,13 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 
+import CardComponent from '@/components/card/Card'
 import ResponsiveDrawer from '@/components/drawer/Drawer'
 import callApi from '@/utils/callApi'
-import CardComponent from '@/components/card/Card'
 
 export default function Dashboard() {
   const [healthStatus, setHealthStatus] = useState('')
-  
 
   useEffect(() => {
     callApi('/healthy', 'GET').then((data) => {
