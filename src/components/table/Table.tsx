@@ -1,16 +1,15 @@
-import { FC } from 'react';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { FC } from 'react'
 
 const rows = [
   { id: 1, name: 'Ethereum', symbol: 'ETH', amount: '19.00', percentage: '6.52%' },
   { id: 2, name: 'Bitcoin', symbol: 'BTC', amount: '2.56', percentage: '90.25%' },
   { id: 3, name: 'Tether', symbol: 'USDT', amount: '140.01', percentage: '3.48%' },
-];
+]
 
 const CustomTable: FC = () => {
   return (
-    <TableContainer component={Paper}>      
+    <TableContainer component={Paper}>
       <Table aria-label="simple table" sx={{ backgroundColor: 'background.default' }}>
         <TableHead>
           <TableRow>
@@ -34,7 +33,7 @@ const CustomTable: FC = () => {
         </TableBody>
       </Table>
     </TableContainer>
-  );
-};
+  )
+}
 
-export default CustomTable;
+export default CustomTable
