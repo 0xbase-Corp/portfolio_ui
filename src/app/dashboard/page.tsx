@@ -10,6 +10,7 @@ import callApi from '@/utils/callApi'
 export default function Dashboard() {
   const [healthStatus, setHealthStatus] = useState('')
   const [btcWalletData, setBtcWalletData] = useState({})
+  const [solanaWalletData, setSolanaWalletData] = useState({})
 
   useEffect(() => {
     callApi('/healthy', 'GET').then((data) => {
@@ -21,6 +22,17 @@ export default function Dashboard() {
     callApi(`/api/v1/portfolio/btc/${btcAddress}`, 'GET').then((data) => {
       setBtcWalletData(data)
     })
+
+    const solanaAddress = 'ANRN6jr3auEieFNMvTG8C4ZBYLnUmceuFdNZnWfiYgr'
+    callApi(`/api/v1/portfolio/solana/${solanaAddress}`, 'GET', null, {
+      headers: {
+        Accept: 'application/json',
+        'x-api-key':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImVkMDU0NGVhLWVkOGQtNDYxZS1hYmFiLTg1Y2IxNGQwN2NhOSIsIm9yZ0lkIjoiMzY2NTQ4IiwidXNlcklkIjoiMzc2NzEwIiwidHlwZUlkIjoiMjQ0ZjhlZjAtZTU5Ni00ZWMyLWIxY2MtYTExZDc4MjU3ZTI5IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MDE0MTQ1MDEsImV4cCI6NDg1NzE3NDUwMX0.tWhn6mb3vSpPbgXB_SYA7BD4c5Z0_lJ_Jsb73Nag824',
+      },
+    }).then((data) => {
+      setSolanaWalletData(data)
+    })
   }, [])
 
   return (
@@ -31,7 +43,7 @@ export default function Dashboard() {
         <h1>$2,77,308.00</h1>
         <h2>-$1200.78(-1.89%) 24H</h2>
       </CardComponent>
-      <CustomTable data={btcWalletData} />
+      <CustomTable data={[btcWalletData, solanaWalletData]} />
     </main>
   )
 }

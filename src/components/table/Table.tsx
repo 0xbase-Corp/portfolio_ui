@@ -14,7 +14,7 @@ const StyledTableContainer = styled(TableContainer)`
 `
 
 interface CustomTableProps {
-  data: any // Consider using a more specific type for your data
+  data: any[]
 }
 
 const CustomTable: FC<CustomTableProps> = ({ data }) => {
@@ -30,19 +30,18 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data && (
-            <TableRow style={{ borderBottom: '1px solid #333' }}>
+          {data.map((item, index) => (
+            <TableRow key={index} style={{ borderBottom: '1px solid #333' }}>
               <TableCell component="th" scope="row">
-                {data.wallet_id}
+                {item.wallet_id}
               </TableCell>
-              <TableCell align="right">{data.blockchain_type}</TableCell>
-              <TableCell align="right">{data.wallet_address}</TableCell>
-              {/* Safely access btc_usd_price with a conditional check */}
+              <TableCell align="right">{item.blockchain_type}</TableCell>
+              <TableCell align="right">{item.wallet_address}</TableCell>
               <TableCell align="right">
-                {data.bitcoin_btc_com_v1 ? data.bitcoin_btc_com_v1.btc_usd_price : 'N/A'}
+                {item.bitcoin_btc_com_v1 ? item.bitcoin_btc_com_v1.btc_usd_price : 'N/A'}
               </TableCell>
             </TableRow>
-          )}
+          ))}
         </TableBody>
       </Table>
     </StyledTableContainer>
