@@ -10,7 +10,6 @@ import callApi from '@/utils/callApi'
 export default function Dashboard() {
   const [healthStatus, setHealthStatus] = useState('')
   const [btcWalletData, setBtcWalletData] = useState({})
-  const [solanaWalletData, setSolanaWalletData] = useState({})
 
   useEffect(() => {
     callApi('/healthy', 'GET').then((data) => {
