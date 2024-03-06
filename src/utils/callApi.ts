@@ -2,11 +2,18 @@ interface RequestInit {
   method?: string
   headers?: Record<string, string>
   body?: any
+  queryParams?: Record<string, string>
   [key: string]: any
 }
 
 async function callApi(endpoint: string, method: string = 'GET', body: any = null, options: RequestInit = {}) {
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_LOCAL_URL}${endpoint}`
+  let url = `${process.env.NEXT_PUBLIC_BACKEND_LOCAL_URL}${endpoint}`
+
+  if (options.queryParams) {
+    const queryParams = new URLSearchParams(options.queryParams).toString()
+    url += `?${queryParams}`
+  }
+
   try {
     const config: RequestInit = {
       method,
