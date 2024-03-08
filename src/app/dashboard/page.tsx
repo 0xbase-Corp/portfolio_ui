@@ -11,6 +11,7 @@ export default function Dashboard() {
   const [healthStatus, setHealthStatus] = useState('')
   const [btcWalletData, setBtcWalletData] = useState({})
   const [solanaWalletData, setSolanaWalletData] = useState({})
+  const [debank, setDebank] = useState({})
 
   useEffect(() => {
     callApi('/healthy', 'GET').then((data) => {
@@ -33,6 +34,18 @@ export default function Dashboard() {
     }).then((data) => {
       setSolanaWalletData(data)
     })
+
+    const debankAddress = '0x5124fcC2B3F99F571AD67D075643C743F38f1C34'
+    callApi(`/api/v1/portfolio/debank/${debankAddress}`, 'GET', null, {
+      headers: {
+        Accept: 'application/json',
+        'AccessKey':
+          '66797109ad02eb4c2a1c8dcc6014547bfac88402',
+      },
+    }).then((data) => {
+      setDebank(data)
+      console.log(data)
+    })
   }, [])
 
   return (
@@ -43,7 +56,7 @@ export default function Dashboard() {
         <h1>$2,77,308.00</h1>
         <h2>-$1200.78(-1.89%) 24H</h2>
       </CardComponent>
-      <CustomTable data={[btcWalletData, solanaWalletData]} />
+      <CustomTable data={[btcWalletData, solanaWalletData, debank]} />
     </main>
   )
 }
