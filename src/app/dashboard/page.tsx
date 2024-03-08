@@ -14,37 +14,35 @@ export default function Dashboard() {
   const [debank, setDebank] = useState({})
 
   useEffect(() => {
-    callApi('/healthy', 'GET').then((data) => {
-      const message = data.message
-      setHealthStatus(message)
-    })
+    const fetchData = async () => {
+      const healthData = await callApi('/healthy', 'GET')
+      setHealthStatus(healthData.message)
 
-    const btcAddress = '37jKPSmbEGwgfacCr2nayn1wTaqMAbA94Z'
-    callApi(`/api/v1/portfolio/btc/${btcAddress}`, 'GET').then((data) => {
-      setBtcWalletData(data)
-    })
+      const btcAddress = `${process.env.NEXT_PUBLIC_BTC_ADDRESS}`
+      const btcData = await callApi(`/api/v1/portfolio/btc/${btcAddress}`, 'GET')
+      setBtcWalletData(btcData)
 
-    const solanaAddress = 'ANRN6jr3auEieFNMvTG8C4ZBYLnUmceuFdNZnWfiYgr'
-    callApi(`/api/v1/portfolio/solana/${solanaAddress}`, 'GET', null, {
-      headers: {
-        Accept: 'application/json',
-        'x-api-key':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImVkMDU0NGVhLWVkOGQtNDYxZS1hYmFiLTg1Y2IxNGQwN2NhOSIsIm9yZ0lkIjoiMzY2NTQ4IiwidXNlcklkIjoiMzc2NzEwIiwidHlwZUlkIjoiMjQ0ZjhlZjAtZTU5Ni00ZWMyLWIxY2MtYTExZDc4MjU3ZTI5IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MDE0MTQ1MDEsImV4cCI6NDg1NzE3NDUwMX0.tWhn6mb3vSpPbgXB_SYA7BD4c5Z0_lJ_Jsb73Nag824',
-      },
-    }).then((data) => {
-      setSolanaWalletData(data)
-    })
+      const solanaAddress = `${process.env.NEXT_PUBLIC_SOLANA_ADDRESS}`
+      const solanaData = await callApi(`/api/v1/portfolio/solana/${solanaAddress}`, 'GET', null, {
+        headers: {
+          Accept: 'application/json',
+          'x-api-key': `${process.env.NEXT_PUBLIC_SOLANA_API_KEY}`,
+        },
+      })
+      setSolanaWalletData(solanaData)
 
-    const debankAddress = '0x5124fcC2B3F99F571AD67D075643C743F38f1C34'
-    callApi(`/api/v1/portfolio/debank/${debankAddress}`, 'GET', null, {
-      headers: {
-        Accept: 'application/json',
-        AccessKey: '66797109ad02eb4c2a1c8dcc6014547bfac88402',
-      },
-    }).then((data) => {
-      setDebank(data)
-      console.log(data)
-    })
+      const debankAddress = `${process.env.NEXT_PUBLIC_DEBANK_ADDRESS}`
+      const debankData = await callApi(`/api/v1/portfolio/debank/${debankAddress}`, 'GET', null, {
+        headers: {
+          Accept: 'application/json',
+          AccessKey: `${process.env.NEXT_PUBLIC_DEBANK_ACCESS_KEY}`,
+        },
+      })
+      setDebank(debankData)
+      console.log(debankData)
+    }
+
+    fetchData()
   }, [])
 
   return (
