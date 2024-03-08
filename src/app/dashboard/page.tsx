@@ -39,8 +39,7 @@ export default function Dashboard() {
     callApi(`/api/v1/portfolio/debank/${debankAddress}`, 'GET', null, {
       headers: {
         Accept: 'application/json',
-        'AccessKey':
-          '66797109ad02eb4c2a1c8dcc6014547bfac88402',
+        AccessKey: '66797109ad02eb4c2a1c8dcc6014547bfac88402',
       },
     }).then((data) => {
       setDebank(data)
