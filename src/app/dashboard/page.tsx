@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import CardComponent from '@/components/card/Card'
 import ResponsiveDrawer from '@/components/drawer/Drawer'
+import CustomTable from '@/components/table/Table'
 import callApi from '@/utils/callApi'
 
 export default function Dashboard() {
@@ -24,6 +25,7 @@ export default function Dashboard() {
         <h1>$2,77,308.00</h1>
         <h2>-$1200.78(-1.89%) 24H</h2>
       </CardComponent>
+      <CustomTable />
     </main>
   )
 }
