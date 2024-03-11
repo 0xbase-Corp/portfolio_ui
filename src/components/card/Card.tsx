@@ -15,13 +15,12 @@ const StyledPaper = styled(Paper)`
 const CardContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 100%;
 `
 
 const CardComponent: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <CardContainer>
-      <StyledPaper elevation={0}>{children}</StyledPaper>
+      <StyledPaper>{children}</StyledPaper>
     </CardContainer>
   )
 }

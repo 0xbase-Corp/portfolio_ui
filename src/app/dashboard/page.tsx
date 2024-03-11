@@ -9,11 +9,17 @@ import callApi from '@/utils/callApi'
 
 export default function Dashboard() {
   const [healthStatus, setHealthStatus] = useState('')
+  const [btcWalletData, setBtcWalletData] = useState({})
 
   useEffect(() => {
     callApi('/healthy', 'GET').then((data) => {
       const message = data.message
       setHealthStatus(message)
+    })
+
+    const btcAddress = '37jKPSmbEGwgfacCr2nayn1wTaqMAbA94Z'
+    callApi(`/api/v1/portfolio/btc/${btcAddress}`, 'GET').then((data) => {
+      setBtcWalletData(data)
     })
   }, [])
 
@@ -25,7 +31,7 @@ export default function Dashboard() {
         <h1>$2,77,308.00</h1>
         <h2>-$1200.78(-1.89%) 24H</h2>
       </CardComponent>
-      <CustomTable />
+      <CustomTable data={btcWalletData} />
     </main>
   )
 }
