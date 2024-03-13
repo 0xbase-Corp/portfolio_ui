@@ -1,7 +1,7 @@
 'use client'
 
-import MailIcon from '@mui/icons-material/Mail'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'
+import DashboardIcon from '@mui/icons-material/Dashboard'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
@@ -44,25 +44,40 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
 
   const drawerItems = (
     <div>
-      <Toolbar />
-      <Divider />
+      <Toolbar>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <img src="/assets/logo_Folionomics.png" alt="FolioNomics Logo" style={{ height: '3rem', margin: 'auto' }} />
+        </Box>
+      </Toolbar>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+        {[
+          { text: 'Dashboard', icon: <DashboardIcon /> },
+          { text: 'Wallets', icon: <AccountBalanceWalletIcon /> },
+        ].map((item, index) => (
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton
+              sx={{
+                color: 'primary.main',
+                '&:hover': {
+                  bgcolor: 'white',
+                  borderRadius: '22px',
+                  '.MuiListItemIcon-root, .MuiListItemText-primary': {
+                    color: 'black',
+                  },
+                  border: '1px solid green',
+                },
+              }}
+            >
+              <ListItemIcon sx={{ color: 'primary.main' }}>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -74,14 +89,13 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
     <Box sx={{ display: 'flex' }}>
       <DrawerAppBar handleDrawerToggle={handleDrawerToggle} drawerWidth={drawerWidth} title="FOLIO NOMICS" />
       <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           variant="temporary"
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
