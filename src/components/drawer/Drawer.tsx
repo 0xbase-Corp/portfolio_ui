@@ -67,17 +67,32 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
               sx={{
                 color: 'primary.main',
                 '&:hover': {
+                  bgcolor: 'transparent',
+                },
+                '&:hover .listItemBackground': {
                   bgcolor: 'white',
-                  borderRadius: '22px',
+                  borderRadius: '17px',
+                  border: '1px solid green',
                   '.MuiListItemIcon-root, .MuiListItemText-primary': {
                     color: 'black',
                   },
-                  border: '1px solid green',
+                },
+                '.MuiListItemIcon-root, .MuiListItemText-primary': {
+                  color: 'inherit',
+                },
+                '.listItemBackground': {
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: '8px 16px',
+                  borderRadius: '17px',
+                  bgcolor: 'transparent',
                 },
               }}
             >
-              <ListItemIcon sx={{ color: 'primary.main' }}>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
+              <span className="listItemBackground">
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </span>
             </ListItemButton>
           </ListItem>
         ))}
