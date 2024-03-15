@@ -124,7 +124,7 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <DrawerAppBar handleDrawerToggle={handleDrawerToggle} drawerWidth={drawerWidth} title="FOLIO NOMICS" />
+      <DrawerAppBar handleDrawerToggle={handleDrawerToggle} drawerWidth={drawerWidth} title="Zayn" />
       <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="mailbox folders">
         <Drawer
           variant="temporary"
