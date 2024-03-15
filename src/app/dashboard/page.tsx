@@ -18,11 +18,11 @@ export default function Dashboard() {
       const healthData = await callApi('/healthy', 'GET')
       setHealthStatus(healthData.message)
 
-      const btcAddress = `${process.env.NEXT_PUBLIC_BTC_ADDRESS}`
+      const btcAddress = "37jKPSmbEGwgfacCr2nayn1wTaqMAbA94Z"
       const btcData = await callApi(`/api/v1/portfolio/btc/${btcAddress}`, 'GET')
       setBtcWalletData(btcData)
 
-      const solanaAddress = `${process.env.NEXT_PUBLIC_SOLANA_ADDRESS}`
+      const solanaAddress = "ANRN6jr3auEieFNMvTG8C4ZBYLnUmceuFdNZnWfiYgr"
       const solanaData = await callApi(`/api/v1/portfolio/solana/${solanaAddress}`, 'GET', null, {
         headers: {
           Accept: 'application/json',
@@ -31,7 +31,7 @@ export default function Dashboard() {
       })
       setSolanaWalletData(solanaData)
 
-      const debankAddress = `${process.env.NEXT_PUBLIC_DEBANK_ADDRESS}`
+      const debankAddress = "0x5124fcC2B3F99F571AD67D075643C743F38f1C34"
       const debankData = await callApi(`/api/v1/portfolio/debank/${debankAddress}`, 'GET', null, {
         headers: {
           Accept: 'application/json',
