@@ -55,7 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-const UserSection = styled('div')(({ theme }) => ({
+const UserSection = styled('div')(() => ({
   display: 'flex',
   alignItems: 'center',
 }))

@@ -18,8 +18,8 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import IconButton from '@mui/material/IconButton';
 import { useTheme } from '../themeWrapper/ThemeContext'
-import Divider from '../divider/Divider'
 import DrawerAppBar from './DrawerAppBar'
+import Image from 'next/image'
 
 const drawerWidth = 240
 
@@ -59,14 +59,14 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
             height: '100%',
           }}
         >
-          <img src="/assets/logo_Folionomics.png" alt="FolioNomics Logo" style={{ height: '3rem', margin: 'auto' }} />
+          <Image src="/assets/logo_Folionomics.png" alt="FolioNomics Logo" style={{ height: '3rem', margin: 'auto' }} />
         </Box>
       </Toolbar>
       <List>
         {[
           { text: 'Dashboard', icon: <DashboardIcon /> },
           { text: 'Wallets', icon: <AccountBalanceWalletIcon /> },
-        ].map((item, index) => (
+        ].map((item) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton
               sx={{
