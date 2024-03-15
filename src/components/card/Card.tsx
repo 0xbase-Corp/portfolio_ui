@@ -1,3 +1,5 @@
+'use client'
+
 import { Paper } from '@mui/material'
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'

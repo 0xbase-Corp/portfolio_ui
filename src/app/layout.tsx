@@ -6,6 +6,8 @@ import React from 'react'
 
 import PrivyProviderWrapper from '@/components/privyWrapper/PrivyWrapper'
 import ThemeWrapper from '@/components/themeWrapper/ThemeWrapper'
+import { ThemeProvider } from '@/components/themeWrapper/ThemeContext'
+
 
 export const metadata = {
   title: 'Porfolio Meta',
@@ -18,12 +20,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head></head>
       <body>
         <AppRouterCacheProvider>
+          <ThemeProvider>
           <ThemeWrapper>
             <PrivyProviderWrapper>
               <CssBaseline />
               {children}
             </PrivyProviderWrapper>
           </ThemeWrapper>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

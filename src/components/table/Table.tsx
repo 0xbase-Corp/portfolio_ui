@@ -1,3 +1,5 @@
+'use client'
+
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { FC } from 'react'
 import styled from 'styled-components'
