@@ -1,9 +1,12 @@
 'use client'
 
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -14,11 +17,9 @@ import Typography from '@mui/material/Typography'
 import Image from 'next/image'
 import * as React from 'react'
 import { FC } from 'react'
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import IconButton from '@mui/material/IconButton';
-import { useTheme } from '../themeWrapper/ThemeContext'
+
 import Divider from '../divider/Divider'
+import { useTheme } from '../themeWrapper/ThemeContext'
 import DrawerAppBar from './DrawerAppBar'
 
 const drawerWidth = 240
@@ -30,7 +31,7 @@ interface Props {
 const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [isClosing, setIsClosing] = React.useState(false)
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { isDarkMode, toggleTheme } = useTheme()
 
   const handleDrawerClose = () => {
     setIsClosing(true)
@@ -108,24 +109,23 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
             </ListItemButton>
           </ListItem>
         ))}
-        
-      
       </List>
 
-        <Box sx={{
+      <Box
+        sx={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: '16px 0', 
+          padding: '16px 0',
           position: 'absolute',
-          bottom: 0, 
-          width: '100%', 
-        }}>
-          
-          <IconButton onClick={toggleTheme} color="inherit">
-            {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
-        </Box>
+          bottom: 0,
+          width: '100%',
+        }}
+      >
+        <IconButton onClick={toggleTheme} color="inherit">
+          {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+      </Box>
     </div>
   )
 
