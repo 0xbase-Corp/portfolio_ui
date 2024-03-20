@@ -1,17 +1,17 @@
 'use client'
 
-import React, { FC, useState } from 'react'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import MenuIcon from '@mui/icons-material/Menu'
-import SearchIcon from '@mui/icons-material/Search' 
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import SearchIcon from '@mui/icons-material/Search'
+import { Avatar, Menu, MenuItem } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
 import { alpha, styled } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import { Avatar, Menu, MenuItem } from '@mui/material'
-import NotificationsIcon from '@mui/icons-material/Notifications'; 
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import React, { FC, useState } from 'react'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,13 +61,13 @@ const UserSection = styled('div')(() => ({
 }))
 
 const NotificationButton = styled(IconButton)(({ theme }) => ({
-  borderRadius: '50%', 
-  backgroundColor: alpha(theme.palette.common.white, 0.15), 
+  borderRadius: '50%',
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25), 
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  margin: theme.spacing(1), 
-}));
+  margin: theme.spacing(1),
+}))
 
 interface DrawerAppBarProps {
   handleDrawerToggle: () => void
@@ -133,38 +133,28 @@ const DrawerAppBar: FC<DrawerAppBarProps> = ({ handleDrawerToggle, drawerWidth, 
             <MenuIcon />
           </IconButton>
           <div style={{ flexGrow: 1 }}>
-    <Typography variant="h6" noWrap component="div">
-      Hi,{title}
-    </Typography>
-    <Typography variant="subtitle2" noWrap component="div">
-      Here is your detailed portfolio view
-    </Typography>
-  </div>
+            <Typography variant="h6" noWrap component="div">
+              Hi,{title}
+            </Typography>
+            <Typography variant="subtitle2" noWrap component="div">
+              Here is your detailed portfolio view
+            </Typography>
+          </div>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase placeholder="Search Anything…" inputProps={{ 'aria-label': 'search' }} />
           </Search>
-         <NotificationButton>
+          <NotificationButton>
             <NotificationsIcon />
           </NotificationButton>
           <UserSection sx={{ gap: '8px' }}>
-              <Avatar />
-              <Typography
-              variant="subtitle1" 
-              noWrap
-              component="div"
-              sx={{ marginRight: -2 }}
-            >
+            <Avatar />
+            <Typography variant="subtitle1" noWrap component="div" sx={{ marginRight: -2 }}>
               {title}
             </Typography>
-            <IconButton
-              size="small" 
-              sx={{ cursor: 'pointer' }}
-              onClick={handleProfileMenuOpen}
-              
-            >
+            <IconButton size="small" sx={{ cursor: 'pointer' }} onClick={handleProfileMenuOpen}>
               <ArrowDropDownIcon />
             </IconButton>
           </UserSection>
