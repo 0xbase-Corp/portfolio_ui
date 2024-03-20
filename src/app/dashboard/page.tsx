@@ -31,7 +31,7 @@ export default function Dashboard() {
         <h1>$2,77,308.00</h1>
         <h2>-$1200.78(-1.89%) 24H</h2>
       </CardComponent>
-      <CustomTable data={btcWalletData} />
+      <CustomTable data={[btcWalletData]} />
     </main>
   )
 }
