@@ -3,7 +3,6 @@
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import Box from '@mui/material/Box'
-
 import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -74,7 +73,7 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
         {[
           { text: 'Dashboard', icon: <DashboardIcon /> },
           { text: 'Wallets', icon: <AccountBalanceWalletIcon /> },
-        ].map((item, index) => (
+        ].map((item) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton
               sx={{
