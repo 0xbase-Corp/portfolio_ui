@@ -12,6 +12,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import Image from 'next/image'
 import * as React from 'react'
 import { FC } from 'react'
 
@@ -54,7 +55,14 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
             height: '100%',
           }}
         >
-          <img src="/assets/logo_Folionomics.png" alt="FolioNomics Logo" style={{ height: '3rem', margin: 'auto' }} />
+          <Image
+            src="/assets/logo_Folionomics.png"
+            alt="FolioNomics Logo"
+            width={70}
+            height={50}
+            objectFit="contain"
+            style={{ margin: 'auto', display: 'block' }}
+          />
         </Box>
       </Toolbar>
       <List>
