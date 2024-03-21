@@ -23,6 +23,11 @@ interface Props {
   drawerContent?: string
 }
 
+const drawerMenuItems = [
+  { text: 'Dashboard', icon: <DashboardIcon /> },
+  { text: 'Wallets', icon: <AccountBalanceWalletIcon /> },
+]
+
 const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [isClosing, setIsClosing] = React.useState(false)
@@ -59,16 +64,12 @@ const ResponsiveDrawer: FC<Props> = ({ drawerContent }) => {
             alt="FolioNomics Logo"
             width={70}
             height={50}
-            objectFit="contain"
-            style={{ margin: 'auto', display: 'block' }}
+            style={{ objectFit: 'contain', margin: 'auto', display: 'block' }}
           />
         </Box>
       </Toolbar>
       <List>
-        {[
-          { text: 'Dashboard', icon: <DashboardIcon /> },
-          { text: 'Wallets', icon: <AccountBalanceWalletIcon /> },
-        ].map((item) => (
+        {drawerMenuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton
               sx={{
