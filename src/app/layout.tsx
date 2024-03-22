@@ -5,9 +5,8 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import React from 'react'
 
 import PrivyProviderWrapper from '@/components/privyWrapper/PrivyWrapper'
-import ThemeWrapper from '@/components/themeWrapper/ThemeWrapper'
 import { ThemeProvider } from '@/components/themeWrapper/ThemeContext'
-
+import ThemeWrapper from '@/components/themeWrapper/ThemeWrapper'
 
 export const metadata = {
   title: 'Porfolio Meta',
@@ -21,12 +20,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider>
-          <ThemeWrapper>
-            <PrivyProviderWrapper>
-              <CssBaseline />
-              {children}
-            </PrivyProviderWrapper>
-          </ThemeWrapper>
+            <ThemeWrapper>
+              <PrivyProviderWrapper>
+                <CssBaseline />
+                {children}
+              </PrivyProviderWrapper>
+            </ThemeWrapper>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
