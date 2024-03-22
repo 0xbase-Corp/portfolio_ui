@@ -5,6 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import React from 'react'
 
 import PrivyProviderWrapper from '@/components/privyWrapper/PrivyWrapper'
+import { ThemeProvider } from '@/components/themeWrapper/ThemeContext'
 import ThemeWrapper from '@/components/themeWrapper/ThemeWrapper'
 
 export const metadata = {
@@ -18,12 +19,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head></head>
       <body>
         <AppRouterCacheProvider>
-          <ThemeWrapper>
-            <PrivyProviderWrapper>
-              <CssBaseline />
-              {children}
-            </PrivyProviderWrapper>
-          </ThemeWrapper>
+          <ThemeProvider>
+            <ThemeWrapper>
+              <PrivyProviderWrapper>
+                <CssBaseline />
+                {children}
+              </PrivyProviderWrapper>
+            </ThemeWrapper>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

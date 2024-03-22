@@ -1,15 +1,19 @@
 'use client'
 
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
+import IconButton from '@mui/material/IconButton'
 import { useState } from 'react'
 
 import Footer from '@/components/footer/Footer'
 import LoadingButton from '@/components/loadingbutton/LoadingButton'
 import Navbar from '@/components/navbar/Navbar'
+import { useTheme } from '@/components/themeWrapper/ThemeContext'
 import LoginDialog from '@/views/LoginDialog'
 
 export default function Home() {
   const [loading, setLoading] = useState(false)
-
+  const { isDarkMode, toggleTheme } = useTheme()
   const handleButtonClick = async () => {
     try {
       setLoading(true)
@@ -26,6 +30,9 @@ export default function Home() {
       <h1>Landing Home Page</h1>
       <LoginDialog />
       <LoadingButton title="Click me" onClick={handleButtonClick} loading={loading} />
+      <IconButton onClick={toggleTheme} color="inherit">
+        {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
       <Footer />
     </main>
   )

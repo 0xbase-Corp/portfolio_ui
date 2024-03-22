@@ -2,7 +2,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import {
   Box,
-  Collapse,
   IconButton,
   Table,
   TableBody,
@@ -27,8 +26,8 @@ const StyledTableContainer = styled(TableContainer)`
 `
 
 interface StyledTableRowProps {
-  level: number;
-  isLastSubRow?: boolean;
+  level: number
+  isLastSubRow?: boolean
 }
 
 const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
@@ -54,11 +53,11 @@ const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
     }
 
     &:after {
-      
       left: ${({ level }) => `${level * 130 - 10}%`};
 
       top: 0;
-      height: ${({ isLastSubRow }) => (isLastSubRow ? '53%' : '100%')}; // Adjust height based on whether it's the last sub-row
+      height: ${({ isLastSubRow }) =>
+        isLastSubRow ? '53%' : '100%'}; 
     }
   }
 `
@@ -160,7 +159,7 @@ const dummyData: RowData[] = [
 
 const CustomTable: FC<CustomTableProps> = ({ data }) => {
   const [open, setOpen] = useState<{ [key: string]: boolean }>({})
-
+  console.log(data)
   const handleToggle = (name: string) => {
     setOpen((prevOpen) => ({
       ...prevOpen,
@@ -175,21 +174,21 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
           <TableRow>
             <TableCell />
             <TableCell style={{ position: 'relative', paddingBottom: 0 }}>
-            <Typography
-  variant="subtitle1"
-  sx={{
-    position: 'absolute',
-    left: '-4%',
-    transform: 'translateX(-50%)',
-    top: '28%',
-    '@media (max-width: 1150px)': {
-      top: '36%',
-    },
-  }}
->
-  Assets
-</Typography>
-</TableCell>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  position: 'absolute',
+                  left: '-4%',
+                  transform: 'translateX(-50%)',
+                  top: '28%',
+                  '@media (max-width: 1150px)': {
+                    top: '36%',
+                  },
+                }}
+              >
+                Assets
+              </Typography>
+            </TableCell>
             <TableCell align="left">Chain</TableCell>
             <TableCell align="left">Price</TableCell>
             <TableCell align="left">Quantity</TableCell>
@@ -233,13 +232,13 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                 </TableCell>
               </StyledTableRow>
               {row.subRows &&
-  row.subRows.map((subRow, subIndex) => (
-    <StyledTableRow
-      key={`${row.asset_name}-${subIndex}`}
-      style={{ display: open[row.asset_name] ? 'table-row' : 'none' }}
-      level={1}
-      isLastSubRow={subIndex === (row.subRows?.length ?? 0) - 1} // Pass the new prop here
-    >
+                row.subRows.map((subRow, subIndex) => (
+                  <StyledTableRow
+                    key={`${row.asset_name}-${subIndex}`}
+                    style={{ display: open[row.asset_name] ? 'table-row' : 'none' }}
+                    level={1}
+                    isLastSubRow={subIndex === (row.subRows?.length ?? 0) - 1}
+                  >
                     <TableCell />
                     <TableCell component="th" scope="row" style={{ paddingLeft: '50px' }}>
                       <Typography variant="body2" color="textSecondary">
