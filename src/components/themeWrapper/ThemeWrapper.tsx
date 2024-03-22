@@ -1,38 +1,16 @@
 'use client'
 
-import Brightness4Icon from '@mui/icons-material/Brightness4'
-import Brightness7Icon from '@mui/icons-material/Brightness7'
-import { Button } from '@mui/material'
-import { ThemeProvider } from '@mui/material/styles'
-import React, { FC, ReactNode, useEffect, useState } from 'react'
+import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles'
+import React from 'react'
 
 import { darkTheme, lightTheme } from '@/utils/theme'
+import { useTheme } from './ThemeContext'
 
-const ThemeWrapper: FC<{ children: ReactNode }> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
-
-  useEffect(() => {
-    // Check user preference from local storage or any other source
-    const storedTheme = localStorage.getItem('theme')
-    setIsDarkMode(storedTheme === 'dark')
-  }, [])
-
-  const toggleTheme = () => {
-    const newTheme = isDarkMode ? 'light' : 'dark'
-    setIsDarkMode(!isDarkMode)
-    localStorage.setItem('theme', newTheme)
-  }
-
+const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isDarkMode } = useTheme()
   const theme = isDarkMode ? darkTheme : lightTheme
 
-  return (
-    <ThemeProvider theme={theme}>
-      {children}
-      <Button sx={{ ml: 96 }} onClick={toggleTheme}>
-        {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-      </Button>
-    </ThemeProvider>
-  )
+  return <MUIThemeProvider theme={theme}>{children}</MUIThemeProvider>
 }
 
 export default ThemeWrapper
