@@ -1,15 +1,6 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
-import {
-  Box,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from '@mui/material'
+import { Box, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import React, { FC, useState } from 'react'
@@ -27,7 +18,7 @@ const StyledTableContainer = styled(TableContainer)`
 
 interface StyledTableRowProps {
   level: number
-  isLastSubRow?: boolean
+  islastsubRow?: boolean
 }
 
 const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
@@ -46,7 +37,7 @@ const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
     }
 
     &:before {
-      left: 124%;
+      left: 123%;
       top: 50%;
       width: ${({ level }) => `${level * 20}px`};
       border-bottom: ${({ level }) => (level > 0 ? '2px solid #ccc' : 'none')};
@@ -56,8 +47,7 @@ const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
       left: ${({ level }) => `${level * 130 - 10}%`};
 
       top: 0;
-      height: ${({ isLastSubRow }) =>
-        isLastSubRow ? '53%' : '100%'}; 
+      height: ${({ islastsubRow }) => (islastsubRow ? '53%' : '100%')};
     }
   }
 `
@@ -237,7 +227,7 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                     key={`${row.asset_name}-${subIndex}`}
                     style={{ display: open[row.asset_name] ? 'table-row' : 'none' }}
                     level={1}
-                    isLastSubRow={subIndex === (row.subRows?.length ?? 0) - 1}
+                    islastsubRow={subIndex === (row.subRows?.length ?? 0) - 1}
                   >
                     <TableCell />
                     <TableCell component="th" scope="row" style={{ paddingLeft: '50px' }}>
