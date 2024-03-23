@@ -3,8 +3,11 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import { Box, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import Image from 'next/image'
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
+
+import { getAssetLogo } from '@/utils/tableUtils'
 
 const StyledTableContainer = styled(TableContainer)`
   position: fixed;
@@ -18,7 +21,7 @@ const StyledTableContainer = styled(TableContainer)`
 
 interface StyledTableRowProps {
   level: number
-  islastsubRow?: boolean
+  islastsubrow?: boolean
 }
 
 const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
@@ -37,17 +40,17 @@ const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
     }
 
     &:before {
-      left: 123%;
+      left: 130%;
       top: 50%;
       width: ${({ level }) => `${level * 20}px`};
       border-bottom: ${({ level }) => (level > 0 ? '2px solid #ccc' : 'none')};
     }
 
     &:after {
-      left: ${({ level }) => `${level * 130 - 10}%`};
+      left: ${({ level }) => `${level * 137 - 10}%`};
 
       top: 0;
-      height: ${({ islastsubRow }) => (islastsubRow ? '53%' : '100%')};
+      height: ${({ islastsubrow }) => (islastsubrow ? '53%' : '100%')};
     }
   }
 `
@@ -69,8 +72,8 @@ interface RowData {
 
 const dummyData: RowData[] = [
   {
-    asset_name: 'Ethereum ETH',
-    chain: 'Mainnet',
+    asset_name: 'Ethereum',
+    chain: 'Token',
     unit_price: 3342.54,
     amount: 19.0,
     percentage: 6.52,
@@ -78,7 +81,7 @@ const dummyData: RowData[] = [
     asset_price_usd: 151.0,
     subRows: [
       {
-        asset_name: 'Ethereum ETH Token',
+        asset_name: 'Bitcoin',
         chain: 'Token',
         unit_price: 3342.54,
         amount: 12.54,
@@ -87,7 +90,7 @@ const dummyData: RowData[] = [
         asset_price_usd: 12.0,
       },
       {
-        asset_name: 'rsw ETH Token',
+        asset_name: 'Tether',
         chain: 'Token',
         unit_price: 3342.54,
         amount: 12.54,
@@ -99,8 +102,8 @@ const dummyData: RowData[] = [
   },
 
   {
-    asset_name: 'Ethereum ETH2',
-    chain: 'Mainnet',
+    asset_name: 'Ethereum ',
+    chain: 'Token',
     unit_price: 3342.54,
     amount: 19.0,
     percentage: 6.52,
@@ -108,7 +111,7 @@ const dummyData: RowData[] = [
     asset_price_usd: 151.0,
     subRows: [
       {
-        asset_name: 'Ethereum ETH Token',
+        asset_name: 'Solana',
         chain: 'Token',
         unit_price: 3342.54,
         amount: 12.54,
@@ -117,7 +120,7 @@ const dummyData: RowData[] = [
         asset_price_usd: 12.0,
       },
       {
-        asset_name: 'rsw ETH Token',
+        asset_name: 'Ethereum',
         chain: 'Token',
         unit_price: 3342.54,
         amount: 12.54,
@@ -126,7 +129,7 @@ const dummyData: RowData[] = [
         asset_price_usd: 45.0,
       },
       {
-        asset_name: 'rsw1 ETH Token',
+        asset_name: 'Bitcoin',
         chain: 'Token',
         unit_price: 3342.54,
         amount: 12.54,
@@ -135,7 +138,7 @@ const dummyData: RowData[] = [
         asset_price_usd: 45.0,
       },
       {
-        asset_name: 'rsw1 ETH Token',
+        asset_name: 'Tether',
         chain: 'Token',
         unit_price: 3342.54,
         amount: 12.54,
@@ -202,7 +205,16 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                   </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" style={{ paddingLeft: '4px' }}>
-                  {row.asset_name}
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Image
+                      src={getAssetLogo(row.asset_name)}
+                      alt={row.asset_name}
+                      width={20}
+                      height={20}
+                      style={{ marginRight: '5px' }}
+                    />
+                    {row.asset_name}
+                  </div>
                 </TableCell>
                 <TableCell align="left">{row.chain}</TableCell>
                 <TableCell align="left">{row.unit_price}</TableCell>
@@ -227,12 +239,21 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                     key={`${row.asset_name}-${subIndex}`}
                     style={{ display: open[row.asset_name] ? 'table-row' : 'none' }}
                     level={1}
-                    islastsubRow={subIndex === (row.subRows?.length ?? 0) - 1}
+                    islastsubrow={subIndex === (row.subRows?.length ?? 0) - 1}
                   >
                     <TableCell />
                     <TableCell component="th" scope="row" style={{ paddingLeft: '50px' }}>
                       <Typography variant="body2" color="textSecondary">
-                        {subRow.asset_name}
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                          <Image
+                            src={getAssetLogo(subRow.asset_name)}
+                            alt={row.asset_name}
+                            width={20}
+                            height={20}
+                            style={{ marginRight: '5px' }}
+                          />
+                          {subRow.asset_name}
+                        </div>
                       </Typography>
                     </TableCell>
                     <TableCell align="left">{subRow.chain}</TableCell>
