@@ -21,7 +21,7 @@ const StyledTableContainer = styled(TableContainer)`
 
 interface StyledTableRowProps {
   level: number
-  islastsubrow?: boolean
+  islastsubrow?: string
 }
 
 const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
@@ -239,7 +239,7 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                     key={`${row.asset_name}-${subIndex}`}
                     style={{ display: open[row.asset_name] ? 'table-row' : 'none' }}
                     level={1}
-                    islastsubrow={subIndex === (row.subRows?.length ?? 0) - 1}
+                    islastsubrow={subIndex === (row.subRows?.length ?? 0) - 1 ? "true" : undefined}
                   >
                     <TableCell />
                     <TableCell component="th" scope="row" style={{ paddingLeft: '50px' }}>

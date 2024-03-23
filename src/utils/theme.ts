@@ -26,7 +26,7 @@ export const darkTheme = createTheme({
       main: colors.cyan[300],
     },
     background: {
-      default: colors.blueGrey[900],
+      default: '#0D0D0D',
     },
     mode: 'dark',
   },
