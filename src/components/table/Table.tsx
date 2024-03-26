@@ -1,16 +1,8 @@
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import {
-  Box,
-  Collapse,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from '@mui/material'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
+import { Box, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 
@@ -24,59 +16,239 @@ const StyledTableContainer = styled(TableContainer)`
   overflow: auto;
 `
 
+interface StyledTableRowProps {
+  level: number
+  islastsubRow?: boolean
+}
+
+const StyledTableRow = styled(TableRow)<StyledTableRowProps>`
+  & > * {
+    font-size: ${({ level }) => (level > 0 ? '0.875rem' : 'inherit')};
+  }
+  & > *:first-child {
+    position: relative;
+    padding-left: ${({ level }) => `${level * 20}px`};
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      border-left: 2px solid #ccc;
+    }
+
+    &:before {
+      left: 123%;
+      top: 50%;
+      width: ${({ level }) => `${level * 20}px`};
+      border-bottom: ${({ level }) => (level > 0 ? '2px solid #ccc' : 'none')};
+    }
+
+    &:after {
+      left: ${({ level }) => `${level * 130 - 10}%`};
+
+      top: 0;
+      height: ${({ islastsubRow }) => (islastsubRow ? '53%' : '100%')};
+    }
+  }
+`
+
 interface CustomTableProps {
   data: any[]
 }
 
-const CustomTable: FC<CustomTableProps> = ({ data }) => {
-  const [open, setOpen] = useState<{ [key: number]: boolean }>({})
+interface RowData {
+  asset_name: string
+  chain: string
+  unit_price: number
+  amount: number
+  percentage: number
+  profit_loss: number
+  asset_price_usd: number
+  subRows?: RowData[]
+}
 
-  const handleToggle = (index: number) => {
+const dummyData: RowData[] = [
+  {
+    asset_name: 'Ethereum ETH',
+    chain: 'Mainnet',
+    unit_price: 3342.54,
+    amount: 19.0,
+    percentage: 6.52,
+    profit_loss: -2.52,
+    asset_price_usd: 151.0,
+    subRows: [
+      {
+        asset_name: 'Ethereum ETH Token',
+        chain: 'Token',
+        unit_price: 3342.54,
+        amount: 12.54,
+        percentage: 2.79,
+        profit_loss: 0.15,
+        asset_price_usd: 12.0,
+      },
+      {
+        asset_name: 'rsw ETH Token',
+        chain: 'Token',
+        unit_price: 3342.54,
+        amount: 12.54,
+        percentage: 1.25,
+        profit_loss: 0.29,
+        asset_price_usd: 45.0,
+      },
+    ],
+  },
+
+  {
+    asset_name: 'Ethereum ETH2',
+    chain: 'Mainnet',
+    unit_price: 3342.54,
+    amount: 19.0,
+    percentage: 6.52,
+    profit_loss: -2.52,
+    asset_price_usd: 151.0,
+    subRows: [
+      {
+        asset_name: 'Ethereum ETH Token',
+        chain: 'Token',
+        unit_price: 3342.54,
+        amount: 12.54,
+        percentage: 2.79,
+        profit_loss: 0.15,
+        asset_price_usd: 12.0,
+      },
+      {
+        asset_name: 'rsw ETH Token',
+        chain: 'Token',
+        unit_price: 3342.54,
+        amount: 12.54,
+        percentage: 1.25,
+        profit_loss: 0.29,
+        asset_price_usd: 45.0,
+      },
+      {
+        asset_name: 'rsw1 ETH Token',
+        chain: 'Token',
+        unit_price: 3342.54,
+        amount: 12.54,
+        percentage: 1.25,
+        profit_loss: 0.29,
+        asset_price_usd: 45.0,
+      },
+      {
+        asset_name: 'rsw1 ETH Token',
+        chain: 'Token',
+        unit_price: 3342.54,
+        amount: 12.54,
+        percentage: 1.25,
+        profit_loss: 0.29,
+        asset_price_usd: 45.0,
+      },
+    ],
+  },
+]
+
+const CustomTable: FC<CustomTableProps> = ({ data }) => {
+  const [open, setOpen] = useState<{ [key: string]: boolean }>({})
+  console.log(data)
+  const handleToggle = (name: string) => {
     setOpen((prevOpen) => ({
       ...prevOpen,
-      [index]: !prevOpen[index],
+      [name]: !prevOpen[name],
     }))
   }
 
   return (
     <StyledTableContainer>
-      <Table aria-label="simple table" sx={{ backgroundColor: 'background.default' }}>
+      <Table aria-label="portfolio table" sx={{ backgroundColor: 'background.default' }}>
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Wallet ID</TableCell>
-            <TableCell align="right">Coin</TableCell>
-            <TableCell align="right">Wallet Address</TableCell>
-            <TableCell align="right">BTC USD Price</TableCell>
+            <TableCell style={{ position: 'relative', paddingBottom: 0 }}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  position: 'absolute',
+                  left: '-4%',
+                  transform: 'translateX(-50%)',
+                  top: '28%',
+                  '@media (max-width: 1150px)': {
+                    top: '36%',
+                  },
+                }}
+              >
+                Assets
+              </Typography>
+            </TableCell>
+            <TableCell align="left">Chain</TableCell>
+            <TableCell align="left">Price</TableCell>
+            <TableCell align="left">Quantity</TableCell>
+            <TableCell align="left">Percentage</TableCell>
+            <TableCell align="left">Profit/Loss</TableCell>
+            <TableCell align="left">Total Price (USD)</TableCell>
+            <TableCell />
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((item, index) => (
-            <React.Fragment key={index}>
-              <TableRow style={{ borderBottom: '1px solid #333' }}>
-                <TableCell>
-                  <IconButton size="small" onClick={() => handleToggle(index)}>
-                    {open[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          {dummyData.map((row) => (
+            <React.Fragment key={row.asset_name}>
+              <StyledTableRow level={0}>
+                <TableCell style={{ paddingRight: 0 }}>
+                  <IconButton
+                    size="small"
+                    onClick={() => handleToggle(row.asset_name)}
+                    style={{ marginRight: '-12px' }}
+                  >
+                    {open[row.asset_name] ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
                   </IconButton>
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {item.wallet_id}
+                <TableCell component="th" scope="row" style={{ paddingLeft: '4px' }}>
+                  {row.asset_name}
                 </TableCell>
-                <TableCell align="right">{item.blockchain_type}</TableCell>
-                <TableCell align="right">{item.wallet_address}</TableCell>
-                <TableCell align="right">
-                  {item.bitcoin_btc_com_v1 ? item.bitcoin_btc_com_v1.btc_usd_price : 'N/A'}
+                <TableCell align="left">{row.chain}</TableCell>
+                <TableCell align="left">{row.unit_price}</TableCell>
+                <TableCell align="left">{row.amount}</TableCell>
+                <TableCell align="left" style={{ color: 'green' }}>{`${row.percentage}%`}</TableCell>
+                <TableCell align="left" style={{ color: row.profit_loss >= 0 ? 'green' : 'red' }}>
+                  <Box display="flex" alignItems="center" justifyContent="flex-start">
+                    {row.profit_loss >= 0 ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                    <Box marginLeft={0.5}>{`${row.profit_loss}%`}</Box>
+                  </Box>
                 </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                  <Collapse in={open[index]} timeout="auto" unmountOnExit>
-                    <Box margin={1}>
-                      <div>Expanded content for {item.wallet_id}</div>
-                    </Box>
-                  </Collapse>
+                <TableCell align="left">{row.asset_price_usd}</TableCell>
+                <TableCell align="left">
+                  <Button variant="contained" style={{ backgroundColor: 'green', color: 'white', borderRadius: 50 }}>
+                    Forecast
+                  </Button>
                 </TableCell>
-              </TableRow>
+              </StyledTableRow>
+              {row.subRows &&
+                row.subRows.map((subRow, subIndex) => (
+                  <StyledTableRow
+                    key={`${row.asset_name}-${subIndex}`}
+                    style={{ display: open[row.asset_name] ? 'table-row' : 'none' }}
+                    level={1}
+                    islastsubRow={subIndex === (row.subRows?.length ?? 0) - 1}
+                  >
+                    <TableCell />
+                    <TableCell component="th" scope="row" style={{ paddingLeft: '50px' }}>
+                      <Typography variant="body2" color="textSecondary">
+                        {subRow.asset_name}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="left">{subRow.chain}</TableCell>
+                    <TableCell align="left">{subRow.unit_price}</TableCell>
+                    <TableCell align="left">{subRow.amount}</TableCell>
+                    <TableCell align="left" style={{ color: 'green' }}>{`${subRow.percentage}%`}</TableCell>
+                    <TableCell align="left" style={{ color: subRow.profit_loss >= 0 ? 'green' : 'red' }}>
+                      <Box display="flex" alignItems="center" justifyContent="flex-start">
+                        {open[row.asset_name] ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                        <Box marginLeft={0.5}>{`${subRow.profit_loss}%`}</Box>
+                      </Box>
+                    </TableCell>
+                    <TableCell align="left">{subRow.asset_price_usd}</TableCell>
+                    <TableCell />
+                  </StyledTableRow>
+                ))}
             </React.Fragment>
           ))}
         </TableBody>

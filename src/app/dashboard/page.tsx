@@ -39,7 +39,6 @@ export default function Dashboard() {
         },
       })
       setDebank(debankData)
-      console.log(debankData)
     }
 
     fetchData()
