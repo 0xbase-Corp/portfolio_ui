@@ -23,7 +23,7 @@ export const darkTheme = createTheme({
       main: colors.grey[50],
     },
     secondary: {
-      main: colors.cyan[300],
+      main: '#212325',
     },
     background: {
       default: '#0D0D0D',

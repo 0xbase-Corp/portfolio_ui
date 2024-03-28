@@ -8,6 +8,7 @@ import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 
 import { getAssetLogo } from '@/utils/tableUtils'
+import { dummyData } from '../../utils/dummyData'
 
 const StyledTableContainer = styled(TableContainer)`
   position: fixed;
@@ -59,97 +60,6 @@ interface CustomTableProps {
   data: any[]
 }
 
-interface RowData {
-  asset_name: string
-  chain: string
-  unit_price: number
-  amount: number
-  percentage: number
-  profit_loss: number
-  asset_price_usd: number
-  subRows?: RowData[]
-}
-
-const dummyData: RowData[] = [
-  {
-    asset_name: 'Ethereum',
-    chain: 'Token',
-    unit_price: 3342.54,
-    amount: 19.0,
-    percentage: 6.52,
-    profit_loss: -2.52,
-    asset_price_usd: 151.0,
-    subRows: [
-      {
-        asset_name: 'Bitcoin',
-        chain: 'Token',
-        unit_price: 3342.54,
-        amount: 12.54,
-        percentage: 2.79,
-        profit_loss: 0.15,
-        asset_price_usd: 12.0,
-      },
-      {
-        asset_name: 'Tether',
-        chain: 'Token',
-        unit_price: 3342.54,
-        amount: 12.54,
-        percentage: 1.25,
-        profit_loss: 0.29,
-        asset_price_usd: 45.0,
-      },
-    ],
-  },
-
-  {
-    asset_name: 'Ethereum ',
-    chain: 'Token',
-    unit_price: 3342.54,
-    amount: 19.0,
-    percentage: 6.52,
-    profit_loss: -2.52,
-    asset_price_usd: 151.0,
-    subRows: [
-      {
-        asset_name: 'Solana',
-        chain: 'Token',
-        unit_price: 3342.54,
-        amount: 12.54,
-        percentage: 2.79,
-        profit_loss: 0.15,
-        asset_price_usd: 12.0,
-      },
-      {
-        asset_name: 'Ethereum',
-        chain: 'Token',
-        unit_price: 3342.54,
-        amount: 12.54,
-        percentage: 1.25,
-        profit_loss: 0.29,
-        asset_price_usd: 45.0,
-      },
-      {
-        asset_name: 'Bitcoin',
-        chain: 'Token',
-        unit_price: 3342.54,
-        amount: 12.54,
-        percentage: 1.25,
-        profit_loss: 0.29,
-        asset_price_usd: 45.0,
-      },
-      {
-        asset_name: 'Tether',
-        chain: 'Token',
-        unit_price: 3342.54,
-        amount: 12.54,
-        percentage: 1.25,
-        profit_loss: 0.29,
-        asset_price_usd: 45.0,
-      },
-    ],
-  },
-]
-
 const CustomTable: FC<CustomTableProps> = ({ data }) => {
   const [open, setOpen] = useState<{ [key: string]: boolean }>({})
   console.log(data)
@@ -163,7 +73,7 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
   return (
     <StyledTableContainer>
       <Table aria-label="portfolio table" sx={{ backgroundColor: 'background.default' }}>
-        <TableHead>
+        <TableHead sx={{ backgroundColor: 'secondary.main' }}>
           <TableRow>
             <TableCell />
             <TableCell style={{ position: 'relative', paddingBottom: 0 }}>
@@ -205,7 +115,7 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                   </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row" style={{ paddingLeft: '4px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Typography variant="body1" color="textPrimary" style={{ display: 'flex', alignItems: 'center'}}>
                     <Image
                       src={getAssetLogo(row.asset_name)}
                       alt={row.asset_name}
@@ -214,12 +124,28 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                       style={{ marginRight: '5px' }}
                     />
                     {row.asset_name}
-                  </div>
+                  </Typography>
                 </TableCell>
-                <TableCell align="left">{row.chain}</TableCell>
+                <TableCell align="left" style={{ paddingLeft: '30px' }}>
+                  {row.chain}
+                </TableCell>
                 <TableCell align="left">{row.unit_price}</TableCell>
                 <TableCell align="left">{row.amount}</TableCell>
-                <TableCell align="left" style={{ color: 'green' }}>{`${row.percentage}%`}</TableCell>
+                <TableCell align="left" style={{ color: 'lightgreen' }}>
+                  <span
+                    style={{
+                      background: `linear-gradient(to right, transparent ${
+                        50 - row.percentage / 2
+                      }%, rgba(144, 238, 144, 0.3) ${50 - row.percentage / 2}%, rgba(144, 238, 144, 0.3) ${
+                        50 + row.percentage / 2
+                      }%, transparent ${50 + row.percentage / 2}%)`,
+                      padding: '6px 32px',
+                    }}
+                  >
+                    {`${row.percentage}%`}
+                  </span>
+                </TableCell>
+
                 <TableCell align="left" style={{ color: row.profit_loss >= 0 ? 'green' : 'red' }}>
                   <Box display="flex" alignItems="center" justifyContent="flex-start">
                     {row.profit_loss >= 0 ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
@@ -239,12 +165,11 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                     key={`${row.asset_name}-${subIndex}`}
                     style={{ display: open[row.asset_name] ? 'table-row' : 'none' }}
                     level={1}
-                    islastsubrow={subIndex === (row.subRows?.length ?? 0) - 1 ? "true" : undefined}
+                    islastsubrow={subIndex === (row.subRows?.length ?? 0) - 1 ? 'true' : undefined}
                   >
                     <TableCell />
                     <TableCell component="th" scope="row" style={{ paddingLeft: '50px' }}>
-                      <Typography variant="body2" color="textSecondary">
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <Typography variant="body2" color="textSecondary" style={{ display: 'flex', alignItems: 'center' }}>
                           <Image
                             src={getAssetLogo(subRow.asset_name)}
                             alt={row.asset_name}
@@ -253,13 +178,25 @@ const CustomTable: FC<CustomTableProps> = ({ data }) => {
                             style={{ marginRight: '5px' }}
                           />
                           {subRow.asset_name}
-                        </div>
                       </Typography>
                     </TableCell>
                     <TableCell align="left">{subRow.chain}</TableCell>
                     <TableCell align="left">{subRow.unit_price}</TableCell>
                     <TableCell align="left">{subRow.amount}</TableCell>
-                    <TableCell align="left" style={{ color: 'green' }}>{`${subRow.percentage}%`}</TableCell>
+                    <TableCell align="left" style={{ color: 'lightgreen' }}>
+                      <span
+                        style={{
+                          background: `linear-gradient(to right, transparent ${
+                            50 - subRow.percentage / 2
+                          }%, rgba(144, 238, 144, 0.3) ${50 - subRow.percentage / 2}%, rgba(144, 238, 144, 0.3) ${
+                            50 + subRow.percentage / 2
+                          }%, transparent ${50 + subRow.percentage / 2}%)`,
+                          padding: '6px 32px',
+                        }}
+                      >
+                        {`${subRow.percentage}%`}
+                      </span>
+                    </TableCell>
                     <TableCell align="left" style={{ color: subRow.profit_loss >= 0 ? 'green' : 'red' }}>
                       <Box display="flex" alignItems="center" justifyContent="flex-start">
                         {open[row.asset_name] ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
